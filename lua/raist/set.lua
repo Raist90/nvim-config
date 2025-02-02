@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("tokyobones")
+vim.cmd.colorscheme("kanagawa-dragon")
 
 local opt = vim.opt
 
@@ -18,7 +18,7 @@ opt.ruler = false
 opt.undolevels = 10000
 
 vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
+	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -37,7 +37,10 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
+
+-- Nerd font icons
+vim.g.have_nerd_font = true
