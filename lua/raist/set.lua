@@ -6,6 +6,7 @@ opt.expandtab = true
 opt.nu = true
 opt.relativenumber = true
 opt.shiftwidth = 2
+-- Don't show the mode, since it's already in the status line
 opt.showmode = false
 opt.smartindent = true
 opt.tabstop = 2
@@ -15,32 +16,40 @@ opt.cursorline = true
 opt.foldlevel = 99
 opt.linebreak = true
 opt.ruler = false
+opt.undofile = true
 opt.undolevels = 10000
+opt.breakindent = true
 
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+	opt.clipboard = "unnamedplus"
 end)
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
-vim.opt.signcolumn = "yes"
+opt.signcolumn = "yes"
 
 -- Decrease update time
-vim.opt.updatetime = 250
-
+opt.updatetime = 250
 -- Decrease mapped sequence wait time
-vim.opt.timeoutlen = 300
+opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
-vim.opt.splitright = true
+opt.splitright = true
 
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = "split"
+opt.inccommand = "split"
 
 -- Nerd font icons
 vim.g.have_nerd_font = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+opt.scrolloff = 10
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
