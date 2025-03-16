@@ -26,6 +26,8 @@ return {
 		vim.keymap.set("n", "<leader>jj", builtin.jumplist, {})
 		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+		vim.keymap.set("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "[S]earch document [S]ymbols" })
+		vim.keymap.set("n", "<leader>ft", builtin.colorscheme, { desc = "[S]earch [T]hemes" })
 
 		-- It's also possible to pass additional configuration options.
 		--  See `:help telescope.builtin.live_grep()` for information about particular keys
