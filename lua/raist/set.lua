@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("kanagawa-dragon")
+vim.cmd.colorscheme("rose-pine")
 
 local opt = vim.opt
 
