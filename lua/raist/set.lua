@@ -1,5 +1,5 @@
-vim.cmd.colorscheme("kanagawa-dragon")
 vim.cmd("let g:netrw_banner = 0")
+vim.cmd.colorscheme("kanagawa")
 
 local opt = vim.opt
 
