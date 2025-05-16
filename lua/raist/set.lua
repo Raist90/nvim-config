@@ -1,5 +1,5 @@
 vim.cmd("let g:netrw_banner = 0")
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("catppuccin-mocha")
 
 local opt = vim.opt
 
@@ -51,7 +51,7 @@ opt.inccommand = "split"
 vim.g.have_nerd_font = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-opt.scrolloff = 10
+-- opt.scrolloff = 10
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -63,5 +63,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
+	end,
+})
+
+-- Disable copilot suggestion when BlinkCmp menu is open
+vim.api.nvim_create_autocmd("User", {
+	pattern = "BlinkCmpMenuOpen",
+	callback = function()
+		require("copilot.suggestion").dismiss()
+		vim.b.copilot_suggestion_hidden = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "BlinkCmpMenuClose",
+	callback = function()
+		vim.b.copilot_suggestion_hidden = false
 	end,
 })
