@@ -1,4 +1,5 @@
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("kanagawa-dragon")
+vim.cmd("let g:netrw_banner = 0")
 
 local opt = vim.opt
 
@@ -19,6 +20,8 @@ opt.ruler = false
 opt.undofile = true
 opt.undolevels = 10000
 opt.breakindent = true
+opt.backup = false
+opt.termguicolors = true
 
 vim.schedule(function()
 	opt.clipboard = "unnamedplus"
@@ -53,3 +56,12 @@ opt.scrolloff = 10
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
