@@ -97,7 +97,7 @@ return { -- Autocompletion
 		},
 
 		-- Shows a signature help window while you type arguments for a function
-		signature = { enabled = true, window = { border = "single" } },
+		signature = { enabled = true, window = { border = "single", show_documentation = true } },
 
 		sources = {
 			default = { "lsp", "path", "snippets", "lazydev" },

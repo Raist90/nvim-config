@@ -3,6 +3,7 @@ vim.cmd.colorscheme("catppuccin-mocha")
 
 local opt = vim.opt
 
+opt.winborder = "single"
 opt.expandtab = true
 opt.nu = true
 opt.relativenumber = true
@@ -79,5 +80,25 @@ vim.api.nvim_create_autocmd("User", {
 	pattern = "BlinkCmpMenuClose",
 	callback = function()
 		vim.b.copilot_suggestion_hidden = false
+	end,
+})
+
+vim.diagnostic.config({ virtual_text = true })
+
+-- telescope/plenary new winborder workaround
+-- See https://github.com/nvim-telescope/telescope.nvim/issues/3436
+--
+-- This affects any plugin that uses telescope:
+-- telescope.nvim, neogit, dressing.nvim
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TelescopeFindPre",
+	callback = function()
+		vim.opt_local.winborder = "none"
+		vim.api.nvim_create_autocmd("WinLeave", {
+			once = true,
+			callback = function()
+				vim.opt_local.winborder = "single"
+			end,
+		})
 	end,
 })
