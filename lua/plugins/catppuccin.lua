@@ -11,6 +11,12 @@ return {
 					style = "nvchad",
 				},
 				neotree = true,
+				dashboard = true,
+				notify = true,
+				treesitter = true,
+				which_key = true,
+				gitsigns = true,
+				mason = true,
 			},
 			custom_highlights = function(colors)
 				return {
