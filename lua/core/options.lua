@@ -32,11 +32,6 @@ opt.smartcase = true
 
 opt.signcolumn = "yes"
 
--- Decrease update time
-opt.updatetime = 250
--- Decrease mapped sequence wait time
-opt.timeoutlen = 300
-
 -- Configure how new splits should be opened
 opt.splitright = true
 
