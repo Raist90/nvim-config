@@ -29,6 +29,7 @@ return {
 				"emmet_language_server",
 				"bashls",
 				"mdx_analyzer",
+				"gopls",
 			},
 		},
 	},
