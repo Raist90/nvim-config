@@ -1,5 +1,4 @@
 vim.cmd("let g:netrw_banner = 0")
-vim.cmd.colorscheme("catppuccin-mocha")
 
 local opt = vim.opt
 
@@ -57,29 +56,5 @@ vim.g.have_nerd_font = true
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
--- Disable copilot suggestion when BlinkCmp menu is open
-vim.api.nvim_create_autocmd("User", {
-	pattern = "BlinkCmpMenuOpen",
-	callback = function()
-		require("copilot.suggestion").dismiss()
-		vim.b.copilot_suggestion_hidden = true
-	end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-	pattern = "BlinkCmpMenuClose",
-	callback = function()
-		vim.b.copilot_suggestion_hidden = false
-	end,
-})
-
+-- Enable virtual text for diagnostics
 vim.diagnostic.config({ virtual_text = true })

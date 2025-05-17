@@ -18,5 +18,6 @@ return {
 				}
 			end,
 		})
+    vim.cmd("colorscheme catppuccin-mocha")
 	end,
 }

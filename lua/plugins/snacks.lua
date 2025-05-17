@@ -16,4 +16,20 @@ return {
 		statuscolumn = { enabled = false },
 		words = { enabled = true },
 	},
+	keys = {
+		{
+			"<leader>c",
+			function()
+				require("snacks").bufdelete()
+			end,
+			desc = "Delete Buffer",
+		},
+		{
+			"<leader>bc",
+			function()
+				require("snacks").bufdelete.other()
+			end,
+			desc = "Delete Other Buffers",
+		},
+	},
 }
