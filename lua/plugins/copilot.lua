@@ -2,6 +2,7 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		name = "copilot.lua",
+		lazy = true,
 		opts = {
 			suggestion = {
 				enabled = true,

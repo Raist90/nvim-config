@@ -1,5 +1,7 @@
-return { -- Adds git related signs to the gutter, as well as utilities for managing changes
+return {
+	-- Adds git related signs to the gutter, as well as utilities for managing changes
 	"lewis6991/gitsigns.nvim",
+	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		signs = {
 			add = { text = "┃" },
@@ -9,5 +11,11 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
 			changedelete = { text = "~" },
 			untracked = { text = "┆" },
 		},
+	},
+	{
+		-- Visualize merge conflicts marker
+		"akinsho/git-conflict.nvim",
+		version = "*",
+		opts = {},
 	},
 }
