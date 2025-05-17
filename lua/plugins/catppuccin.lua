@@ -6,7 +6,10 @@ return {
 		require("catppuccin").setup({
 			integrations = {
 				blink_cmp = true,
-				telescope = true,
+				telescope = {
+					enabled = true,
+					style = "nvchad",
+				},
 				neotree = true,
 			},
 			custom_highlights = function(colors)
@@ -18,6 +21,6 @@ return {
 				}
 			end,
 		})
-    vim.cmd("colorscheme catppuccin-mocha")
+		vim.cmd("colorscheme catppuccin-mocha")
 	end,
 }
