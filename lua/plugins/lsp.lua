@@ -19,6 +19,13 @@ return {
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
+				-- Replace lsp hover ui
+				vim.keymap.set("n", "K", function()
+					vim.lsp.buf.hover({
+						border = "single",
+					})
+				end, { buffer = event.buf, desc = "LSP: Hover" })
+
 				-- Rename the variable under your cursor.
 				--  Most Language Servers support renaming across files, etc.
 				map("<leader>lr", vim.lsp.buf.rename, "[R]e[n]ame")
