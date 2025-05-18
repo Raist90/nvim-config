@@ -31,6 +31,7 @@ return {
 				"bashls",
 				"mdx_analyzer",
 				"gopls",
+				"marksman",
 			},
 		},
 	},
