@@ -15,6 +15,7 @@ return {
 	{
 		-- Visualize merge conflicts marker
 		"akinsho/git-conflict.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		version = "*",
 		opts = {},
 	},
