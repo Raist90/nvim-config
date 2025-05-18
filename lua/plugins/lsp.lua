@@ -35,7 +35,7 @@ return {
 				map("<leader>la", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
 
 				-- Find references for the word under your cursor.
-				map("gr", require("telescope.builtin").lsp_references, "Goto References")
+				map("gR", require("telescope.builtin").lsp_references, "Goto References")
 
 				-- Jump to the implementation of the word under your cursor.
 				--  Useful when your language has ways of declaring types without an actual implementation.
@@ -209,6 +209,10 @@ return {
 					hybridMode = false,
 				},
 			},
+		})
+
+		vim.lsp.config("emmet_language_server", {
+			filetypes = { "html", "css", "typescriptreact", "javascriptreact", "vue" },
 		})
 	end,
 }
