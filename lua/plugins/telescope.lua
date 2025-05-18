@@ -32,6 +32,14 @@ return {
 		vim.keymap.set("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "[S]earch document [S]ymbols" })
 		vim.keymap.set("n", "<leader>ft", builtin.colorscheme, { desc = "[S]earch [T]hemes" })
 
+		vim.keymap.set("n", "<leader>fW", function()
+			require("telescope.builtin").live_grep({
+				additional_args = function()
+					return { "--hidden", "--no-ignore" }
+				end,
+			})
+		end, { desc = "Find all words" })
+
 		-- It's also possible to pass additional configuration options.
 		--  See `:help telescope.builtin.live_grep()` for information about particular keys
 		vim.keymap.set("n", "<leader>f/", function()
