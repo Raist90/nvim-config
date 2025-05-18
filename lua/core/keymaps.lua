@@ -11,3 +11,6 @@ keymap("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 keymap("n", "<leader>wv", "<C-W>v", { desc = "Split Window Right", remap = true })
 keymap("n", "<leader>ww", "<C-W>w", { desc = "Next Window", remap = true })
+
+keymap("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Mason" })
+keymap("n", "<leader>pl", "<cmd>Lazy<cr>", { desc = "Lazy" })

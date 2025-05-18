@@ -18,6 +18,7 @@ return { -- Useful plugin to show you pending keybinds.
 			{ "<leader>g", group = "Git" },
 			{ "<leader>j", group = "Jump" },
 			{ "<leader>l", group = "LSP" },
+			{ "<leader>p", group = "Packages" },
 			{ "<leader>w", group = "Window" },
 		},
 	},
