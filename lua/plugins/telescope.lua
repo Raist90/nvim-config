@@ -39,6 +39,17 @@ return {
 			})
 		end, { desc = "Find all Words" })
 
+		-- This is a custom function to search for a glob pattern
+		vim.keymap.set("n", "<leader>fg", function()
+			vim.ui.input({ prompt = "Enter glob pattern: " }, function(input)
+				if input then
+					require("telescope.builtin").live_grep({
+						glob_pattern = { input },
+					})
+				end
+			end)
+		end, { desc = "Find Glob Pattern" })
+
 		-- It's also possible to pass additional configuration options.
 		--  See `:help telescope.builtin.live_grep()` for information about particular keys
 		vim.keymap.set("n", "<leader>f/", function()
