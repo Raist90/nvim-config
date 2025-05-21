@@ -32,6 +32,7 @@ return {
         "mdx_analyzer",
         "gopls",
         "marksman",
+        "vue_ls",
       },
     },
   },

@@ -196,7 +196,7 @@ return {
       },
     })
 
-    vim.lsp.config("volar", {
+    vim.lsp.config("vue_ls", {
       settings = {
         vue = {
           server = {
