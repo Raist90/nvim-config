@@ -14,6 +14,12 @@ return {
     notifier = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = { enabled = false },
+    terminal = {
+      enabled = true,
+      win = {
+        height = 0.3,
+      }
+    },
     words = { enabled = true },
     styles = {
       notification = {

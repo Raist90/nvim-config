@@ -1,4 +1,4 @@
-return {             -- Useful plugin to show you pending keybinds.
+return {              -- Useful plugin to show you pending keybinds.
   "folke/which-key.nvim",
   event = "VeryLazy", -- Sets the loading event to 'VimEnter'
 
@@ -20,6 +20,7 @@ return {             -- Useful plugin to show you pending keybinds.
       { "<leader>l", group = "LSP" },
       { "<leader>n", group = "Notification" },
       { "<leader>p", group = "Packages" },
+      { "<leader>t", group = "Terminal" },
       { "<leader>q", group = "Quickfix" },
       { "<leader>w", group = "Window" },
     },

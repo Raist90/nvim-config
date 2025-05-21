@@ -11,6 +11,7 @@ keymap("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 -- Window management
 keymap("n", "<leader>wv", "<C-W>v", { desc = "Split Window Right", remap = true })
+keymap("n", "<leader>ws", "<C-W>s", { desc = "Split Window Down", remap = true })
 keymap("n", "<leader>ww", "<C-W>w", { desc = "Next Window", remap = true })
 
 -- Package management
@@ -67,3 +68,9 @@ end, { desc = "Clear Quickfix List" })
 vim.keymap.set("n", "<leader>nh", function()
   require("snacks").notifier.show_history()
 end, { desc = "Show Notification History" })
+
+-- Toggle the terminal
+vim.keymap.set("n", "<leader>tt", function()
+  require("snacks").terminal.toggle()
+end
+)
