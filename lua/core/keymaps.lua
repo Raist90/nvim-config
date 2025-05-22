@@ -74,3 +74,7 @@ vim.keymap.set("n", "<leader>tt", function()
   require("snacks").terminal.toggle()
 end
 )
+
+-- Copilot chat keymaps
+vim.keymap.set("n", "<leader>Co", "<cmd>CopilotChatOpen<cr>", { desc = "Copilot Chat Prompts" })
+vim.keymap.set("n", "<leader>Cc", "<cmd>CopilotChatClose<cr>", { desc = "Copilot Chat Close" })
