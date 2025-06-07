@@ -9,7 +9,13 @@ return {
     -- refer to the configuration section below
     bigfile = { enabled = true },
     dashboard = { enabled = true },
-    indent = { enabled = true },
+    indent = {
+      enabled = true,
+      indent = {
+        char = "┊",
+        hl = "SnacksIndent",
+      }
+    },
     input = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
