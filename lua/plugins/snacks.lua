@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -27,6 +28,7 @@ return {
       }
     },
     words = { enabled = true },
+    zen = { enabled = true, toggles = { dim = false } },
     styles = {
       notification = {
         relative = "editor",
@@ -35,6 +37,25 @@ return {
       notification_history = {
         relative = "editor",
         border = "single",
+      },
+      zen = {
+        enter = true,
+        fixbuf = false,
+        minimal = false,
+        width = 120,
+        height = 0,
+        backdrop = {
+          transparent = false,
+          blend = 99,
+        },
+        keys = { q = false },
+        zindex = 40,
+        wo = {
+          winhighlight = "NormalFloat:Normal",
+        },
+        w = {
+          snacks_main = true,
+        },
       }
     }
   },
