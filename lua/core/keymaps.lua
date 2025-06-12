@@ -83,3 +83,6 @@ end, { desc = "Toggle Zen Mode" })
 -- Copilot chat keymaps
 vim.keymap.set("n", "<leader>Co", "<cmd>CopilotChatOpen<cr>", { desc = "Copilot Chat Prompts" })
 vim.keymap.set("n", "<leader>Cc", "<cmd>CopilotChatClose<cr>", { desc = "Copilot Chat Close" })
+
+-- Open file history via LazyGit
+vim.keymap.set("n", "<leader>gh", "<cmd>LazyGitFilterCurrentFile<cr>", { desc = "Open File History" })
