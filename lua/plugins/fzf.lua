@@ -15,10 +15,9 @@ return {
       actions = {
         files = {
           ["ctrl-h"] = require("fzf-lua").actions.toggle_ignore,
+          ["enter"]  = require("fzf-lua").actions.file_edit_or_qf,
+          ["ctrl-t"] = require("fzf-lua").actions.file_tabedit,
         },
-        grep = {
-          ["ctrl-h"] = require("fzf-lua").actions.toggle_hidden,
-        }
       },
       defaults = {
         file_icons = false,
