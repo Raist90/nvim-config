@@ -15,10 +15,18 @@ return {
 
     local animate = require "mini.animate"
     return {
+      open = {
+        enable = false,
+      },
+      close = {
+        enable = false,
+      },
       resize = {
+        enable = false,
         timing = animate.gen_timing.linear { duration = 100, unit = "total" },
       },
       scroll = {
+        enable = true,
         timing = animate.gen_timing.linear { duration = 150, unit = "total" },
         subscroll = animate.gen_subscroll.equal {
           predicate = function(total_scroll)

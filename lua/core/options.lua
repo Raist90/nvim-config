@@ -23,7 +23,7 @@ opt.backup = false
 opt.termguicolors = true
 
 vim.schedule(function()
-	opt.clipboard = "unnamedplus"
+  opt.clipboard = "unnamedplus"
 end)
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term

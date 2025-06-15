@@ -84,9 +84,6 @@ end, { desc = "Toggle Zen Mode" })
 vim.keymap.set("n", "<leader>Co", "<cmd>CopilotChatOpen<cr>", { desc = "Copilot Chat Prompts" })
 vim.keymap.set("n", "<leader>Cc", "<cmd>CopilotChatClose<cr>", { desc = "Copilot Chat Close" })
 
--- Open file history via LazyGit
-vim.keymap.set("n", "<leader>gh", "<cmd>LazyGitFilterCurrentFile<cr>", { desc = "Open File History" })
-
 -- Open vim.diagnostic.float()
 vim.keymap.set("n", "<leader>ld", function()
   vim.diagnostic.open_float(nil, { focusable = true, scope = "cursor" })
