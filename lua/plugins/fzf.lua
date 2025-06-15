@@ -53,6 +53,7 @@ return {
     map("<leader>fc", require("fzf-lua").commands, "Search commands")
     map("<leader>fm", require("fzf-lua").manpages, "Search manpages")
     map("gr", require("fzf-lua").lsp_references, "Find references")
+    map("<leader>fk", require("fzf-lua").keymaps, "Find keymaps")
 
     require("fzf-lua").register_ui_select()
   end,
