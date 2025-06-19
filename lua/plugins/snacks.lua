@@ -13,8 +13,14 @@ return {
     indent = {
       enabled = true,
       indent = {
-        char = "┊",
         hl = "SnacksIndent",
+        -- char = "┊",
+      },
+      animate = {
+        enabled = false,
+      },
+      scope = {
+        enabled = true,
       }
     },
     input = { enabled = true },
