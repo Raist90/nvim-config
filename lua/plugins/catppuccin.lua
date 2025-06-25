@@ -4,12 +4,19 @@ return {
   priority = 1000,
   config = function()
     require("catppuccin").setup({
+      styles = {
+        conditionals = {}
+      },
+      transparent_background = true,
       integrations = {
-        blink_cmp = true,
-        telescope = {
-          enabled = true,
-          style = "nvchad",
+        blink_cmp = {
+          style = "bordered"
         },
+        fzf = true,
+        -- telescope = {
+        --   enabled = true,
+        --   style = "nvchad",
+        -- },
         neotree = true,
         dashboard = true,
         notify = true,
@@ -18,6 +25,9 @@ return {
         gitsigns = true,
         mason = true,
         mini = {
+          enabled = true,
+        },
+        snacks = {
           enabled = true,
         }
       },
@@ -30,6 +40,6 @@ return {
         }
       end,
     })
-    -- vim.cmd("colorscheme catppuccin-mocha")
+    vim.cmd("colorscheme catppuccin-mocha")
   end,
 }
