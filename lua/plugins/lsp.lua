@@ -218,5 +218,17 @@ return {
     vim.lsp.config("emmet_language_server", {
       filetypes = { "html", "css", "typescriptreact", "javascriptreact", "vue" },
     })
+
+    vim.lsp.config("eslint", {
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "graphql",
+        "gql"
+      }
+    })
   end,
 }
