@@ -219,22 +219,6 @@ return {
       end,
     })
 
-    vim.lsp.config("vtsls", {
-      settings = {
-        tsserver = {
-          globalPlugins = {
-            name = "@vue/typescript-plugin",
-            location = vim.fn.expand(
-              "$MASON/packages/vue-language-server/node_modules/@vue/language-server"
-            ),
-            languages = { "vue" },
-            configNamespace = "typescript",
-            enableForWorkspaceTypeScriptVersions = true,
-          }
-        }
-      }
-    })
-
     vim.lsp.config("emmet_language_server", {
       filetypes = { "html", "css", "typescriptreact", "javascriptreact", "vue" },
     })
