@@ -32,7 +32,7 @@ return {
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
-        map("<leader>la", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
+        -- map("<leader>la", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
 
         -- Find references for the word under your cursor.
         -- map("gR", require("telescope.builtin").lsp_references, "Goto References")
@@ -205,6 +205,10 @@ return {
         },
       },
       init_options = {
+        -- https://github.com/mason-org/mason-lspconfig.nvim/issues/587
+        typescript = {
+          tsdk = ""
+        },
         vue = {
           hybridMode = false,
         },
@@ -213,6 +217,22 @@ return {
         -- Disable formatting capabilities for Volar
         client.server_capabilities.documentFormattingProvider = false
       end,
+    })
+
+    vim.lsp.config("vtsls", {
+      settings = {
+        tsserver = {
+          globalPlugins = {
+            name = "@vue/typescript-plugin",
+            location = vim.fn.expand(
+              "$MASON/packages/vue-language-server/node_modules/@vue/language-server"
+            ),
+            languages = { "vue" },
+            configNamespace = "typescript",
+            enableForWorkspaceTypeScriptVersions = true,
+          }
+        }
+      }
     })
 
     vim.lsp.config("emmet_language_server", {

@@ -54,6 +54,12 @@ return {
     map("<leader>fm", require("fzf-lua").manpages, "Search manpages")
     map("gr", require("fzf-lua").lsp_references, "Find references")
     map("<leader>fk", require("fzf-lua").keymaps, "Find keymaps")
+    map("<leader>la", function()
+      -- https://github.com/ibhagwan/fzf-lua/issues/1295
+      require("fzf-lua").lsp_code_actions({
+        previewer = false,
+      })
+    end, "LSP Code Actions")
 
     require("fzf-lua").register_ui_select()
   end,

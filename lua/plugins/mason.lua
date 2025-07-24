@@ -20,7 +20,6 @@ return {
       ensure_installed = {
         "html",
         "cssls",
-        "ts_ls",
         "eslint",
         "jsonls",
         "yamlls",
@@ -33,6 +32,7 @@ return {
         "gopls",
         "marksman",
         "vue_ls",
+        "vtsls"
       },
     },
   },
