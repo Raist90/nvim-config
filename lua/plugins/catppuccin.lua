@@ -23,7 +23,9 @@ return {
         },
         snacks = {
           enabled = true,
-        }
+          indent_scope_color = "lavender",
+        },
+        flash = true,
       },
       custom_highlights = function(colors)
         return {
