@@ -25,6 +25,11 @@ return {              -- Useful plugin to show you pending keybinds.
       { "<leader>q", group = "Quickfix" },
       { "<leader>w", group = "Window" },
     },
+
+    ---@type wk.Win.opts
+    win = {
+      border = "single",
+    }
   },
   keys = {
     {
