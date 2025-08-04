@@ -4,6 +4,10 @@ return {
   priority = 1000,
   config = function()
     require("catppuccin").setup({
+      float = {
+        solid = true,
+        transparent = true,
+      },
       no_italic = true,
       transparent_background = true,
       integrations = {
