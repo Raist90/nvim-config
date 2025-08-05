@@ -31,14 +31,6 @@ return {
         },
         flash = true,
       },
-      custom_highlights = function(colors)
-        return {
-          BlinkCmpMenu = { bg = colors.base },
-          BlinkCmpMenuBorder = { bg = colors.base, fg = colors.blue },
-          BlinkCmpDoc = { bg = colors.base },
-          BlinkCmpDocBorder = { bg = colors.base, fg = colors.blue },
-        }
-      end,
     })
     vim.cmd("colorscheme catppuccin-mocha")
   end,
