@@ -9,7 +9,7 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = { enabled = false },
     indent = {
       enabled = false,
       indent = {
@@ -20,12 +20,12 @@ return {
         enabled = false,
       },
       scope = {
-        enabled = true,
+        enabled = false,
       }
     },
     input = { enabled = true },
     notifier = { enabled = true },
-    quickfile = { enabled = true },
+    quickfile = { enabled = false },
     statuscolumn = { enabled = false },
     terminal = {
       enabled = true,
@@ -33,8 +33,8 @@ return {
         height = 0.3,
       }
     },
-    words = { enabled = true },
-    zen = { enabled = true, toggles = { dim = false } },
+    words = { enabled = false },
+    zen = { enabled = true, toggles = { dim = false }, show = { statusline = true } },
     styles = {
       notification = {
         relative = "editor",

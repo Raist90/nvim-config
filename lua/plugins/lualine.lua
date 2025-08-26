@@ -27,6 +27,7 @@ return {
 
     require("lualine").setup({
       options = {
+        globalstatus = true,
         -- no section seperator
         -- and pipe as component seperator
         component_separators = "|",
