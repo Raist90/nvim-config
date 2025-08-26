@@ -9,13 +9,13 @@ return {
       desc = "Disable indentscope for certain filetypes",
       callback = function()
         local ignore_filetypes = {
-          "dashboard",
+          "snacks_dashboard",
           "help",
           "lazy",
           "mason",
           "notify",
-          "startify",
-          "fzf"
+          "fzf",
+          "markdown",
         }
         if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
           vim.b.miniindentscope_disable = true
