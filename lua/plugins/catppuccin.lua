@@ -31,6 +31,11 @@ return {
         },
         flash = true,
       },
+      custom_highlights = function(colors)
+        return {
+          MiniIndentscopeSymbol = { fg = colors.lavender },
+        }
+      end,
     })
     vim.cmd("colorscheme catppuccin-mocha")
   end,

@@ -11,7 +11,7 @@ return {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
     indent = {
-      enabled = true,
+      enabled = false,
       indent = {
         hl = "SnacksIndent",
         -- char = "┊",
