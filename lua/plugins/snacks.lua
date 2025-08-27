@@ -24,11 +24,12 @@ return {
       }
     },
     input = { enabled = true },
+    lazygit = { enabled = false },
     notifier = { enabled = true },
     quickfile = { enabled = false },
     statuscolumn = { enabled = false },
     terminal = {
-      enabled = true,
+      enabled = false,
       win = {
         height = 0.3,
       }
