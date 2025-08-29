@@ -6,6 +6,5 @@ return {
     preview_config = {
       border = "single",
     },
-    word_diff = true,
   }
 }
