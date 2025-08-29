@@ -8,7 +8,8 @@ return {
     build = "make tiktoken",                          -- Only on MacOS or Linux
     opts = {
       -- See Configuration section for options
-      model = "claude-sonnet-4",
+      -- model = "claude-sonnet-4",
+      model = "gpt-4.1",
       picker = {
         enabled = true,
         ui_select = true,
