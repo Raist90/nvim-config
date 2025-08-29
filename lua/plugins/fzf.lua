@@ -1,9 +1,5 @@
 return {
   "ibhagwan/fzf-lua",
-  -- optional for icon support
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- or if using mini.icons/mini.nvim
-  -- dependencies = { "echasnovski/mini.icons" },
   config = function()
     local map = function(keys, func, desc, mode)
       mode = mode or "n"
@@ -11,25 +7,47 @@ return {
     end
 
     require("fzf-lua").setup({
-      "telescope",
-      actions = {
+      "default",
+      actions    = {
         files = {
           ["ctrl-h"] = require("fzf-lua").actions.toggle_ignore,
           ["enter"]  = require("fzf-lua").actions.file_edit_or_qf,
-          ["ctrl-t"] = require("fzf-lua").actions.file_tabedit,
+        }
+      },
+      buffers    = {
+        keymap = { builtin = { ["<C-d>"] = false } },
+      },
+      keymap     = {
+        builtin = {
+          true,
+          ["<C-d>"] = "preview-page-down",
+          ["<C-u>"] = "preview-page-up",
+        },
+        fzf = {
+          true,
+          ["ctrl-d"] = "preview-page-down",
+          ["ctrl-u"] = "preview-page-up",
+          ["ctrl-q"] = "select-all+accept",
         },
       },
-      defaults = {
+      defaults   = {
         file_icons = false,
       },
-      fzf_opts = {
+      fzf_opts   = {
         ["--layout"] = "reverse",
       },
-      winopts = {
+      winopts    = {
         border = "single",
         preview = {
           border = "single"
         }
+      },
+      fzf_colors = {
+        ["gutter"] = "-1",
+        ["fg+"] = { "fg", "TelescopeSelection" },
+        ["bg+"] = { "bg", "TelescopeSelection" },
+        ["hl+"] = { "fg", "TelescopeSelection" },
+        ["pointer"] = { "fg", "TelescopeSelection" }
       }
     })
 
