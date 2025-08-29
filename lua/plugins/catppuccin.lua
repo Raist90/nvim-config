@@ -33,6 +33,7 @@ return {
       },
       custom_highlights = function(colors)
         return {
+          LazyGitBorder = { fg = colors.lavender },
           MiniIndentscopeSymbol = { fg = colors.lavender },
         }
       end,
