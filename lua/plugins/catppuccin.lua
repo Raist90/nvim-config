@@ -6,10 +6,10 @@ return {
     require("catppuccin").setup({
       float = {
         solid = true,
-        transparent = true,
+        transparent = false,
       },
       no_italic = true,
-      transparent_background = true,
+      transparent_background = false,
       integrations = {
         blink_cmp = {
           style = "bordered"
