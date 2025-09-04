@@ -21,7 +21,7 @@ return {
       },
       scope = {
         enabled = false,
-      }
+      },
     },
     input = { enabled = true },
     lazygit = { enabled = false },
@@ -32,7 +32,7 @@ return {
       enabled = false,
       win = {
         height = 0.3,
-      }
+      },
     },
     words = { enabled = false },
     zen = { enabled = true, toggles = { dim = false }, show = { statusline = true } },
@@ -63,8 +63,8 @@ return {
         w = {
           snacks_main = true,
         },
-      }
-    }
+      },
+    },
   },
   keys = {
     {

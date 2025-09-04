@@ -12,7 +12,7 @@ return {
       transparent_background = false,
       integrations = {
         blink_cmp = {
-          style = "bordered"
+          style = "bordered",
         },
         fzf = true,
         neotree = true,

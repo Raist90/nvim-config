@@ -1,6 +1,6 @@
 return {
-  'nvim-mini/mini.indentscope',
-  version = '*',
+  "nvim-mini/mini.indentscope",
+  version = "*",
   config = function()
     require("mini.indentscope").setup()
 
@@ -20,7 +20,7 @@ return {
         if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
           vim.b.miniindentscope_disable = true
         end
-      end
+      end,
     })
-  end
+  end,
 }

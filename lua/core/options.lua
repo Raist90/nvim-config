@@ -3,7 +3,7 @@ vim.cmd("let g:netrw_banner = 0")
 local opt = vim.opt
 
 -- Don't show the ~ at the end of the buffer
-opt.fillchars:append { eob = " " }
+opt.fillchars:append({ eob = " " })
 
 opt.expandtab = true
 opt.nu = true

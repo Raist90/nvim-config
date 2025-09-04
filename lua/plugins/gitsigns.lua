@@ -6,5 +6,5 @@ return {
     preview_config = {
       border = "single",
     },
-  }
+  },
 }

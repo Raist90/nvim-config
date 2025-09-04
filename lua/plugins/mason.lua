@@ -8,7 +8,7 @@ return {
           package_pending = "➜",
           package_uninstalled = "✗",
         },
-        border = "single"
+        border = "single",
       },
     },
   },
@@ -33,7 +33,7 @@ return {
         "gopls",
         "marksman",
         "vue_ls",
-        "vtsls"
+        "vtsls",
       },
     },
   },
@@ -45,10 +45,10 @@ return {
       -- list of formatter and linter for mason to install
       ensure_installed = {
         "stylua", -- lua formatter
-        "isort",  -- python formatter
-        "black",  -- python formatter
+        "isort", -- python formatter
+        "black", -- python formatter
         "pylint", -- python linter
-        "shfmt",  -- sh formatter with bash support
+        "shfmt", -- sh formatter with bash support
       },
     },
   },

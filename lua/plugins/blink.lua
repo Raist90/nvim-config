@@ -34,7 +34,9 @@ return { -- Autocompletion
   --- @module 'blink.cmp'
   --- @type blink.cmp.Config
   opts = {
-    enabled = function() return not vim.tbl_contains({ "copilot-chat" }, vim.bo.filetype) end,
+    enabled = function()
+      return not vim.tbl_contains({ "copilot-chat" }, vim.bo.filetype)
+    end,
 
     -- 'default' (recommended) for mappings similar to built-in completions
     --   <c-y> to accept ([y]es) the completion.

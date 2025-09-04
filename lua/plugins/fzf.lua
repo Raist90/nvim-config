@@ -8,16 +8,16 @@ return {
 
     require("fzf-lua").setup({
       "default",
-      actions    = {
+      actions = {
         files = {
           ["ctrl-h"] = require("fzf-lua").actions.toggle_ignore,
-          ["enter"]  = require("fzf-lua").actions.file_edit_or_qf,
-        }
+          ["enter"] = require("fzf-lua").actions.file_edit_or_qf,
+        },
       },
-      buffers    = {
+      buffers = {
         keymap = { builtin = { ["<C-d>"] = false } },
       },
-      keymap     = {
+      keymap = {
         builtin = {
           true,
           ["<C-d>"] = "preview-page-down",
@@ -30,25 +30,25 @@ return {
           ["ctrl-q"] = "select-all+accept",
         },
       },
-      defaults   = {
+      defaults = {
         file_icons = false,
       },
-      fzf_opts   = {
+      fzf_opts = {
         ["--layout"] = "reverse",
       },
-      winopts    = {
+      winopts = {
         border = "single",
         preview = {
-          border = "single"
-        }
+          border = "single",
+        },
       },
       fzf_colors = {
         ["gutter"] = "-1",
         ["fg+"] = { "fg", "TelescopeSelection" },
         ["bg+"] = { "bg", "TelescopeSelection" },
         ["hl+"] = { "fg", "TelescopeSelection" },
-        ["pointer"] = { "fg", "TelescopeSelection" }
-      }
+        ["pointer"] = { "fg", "TelescopeSelection" },
+      },
     })
 
     map("<leader>ff", require("fzf-lua").files, "Find Files")

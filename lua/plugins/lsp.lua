@@ -83,12 +83,8 @@ return {
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if
-            client
-            and client_supports_method(
-              client,
-              vim.lsp.protocol.Methods.textDocument_documentHighlight,
-              event.buf
-            )
+          client
+          and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
         then
           local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
           vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -116,10 +112,7 @@ return {
         -- code, if the language server you are using supports them
         --
         -- This may be unwanted, since they displace some of your code
-        if
-            client
-            and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
-        then
+        if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
           map("<leader>lh", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
           end, "Toggle Inlay Hints")
@@ -188,7 +181,7 @@ return {
       init_options = {
         -- https://github.com/mason-org/mason-lspconfig.nvim/issues/587
         typescript = {
-          tsdk = ""
+          tsdk = "",
         },
         vue = {
           hybridMode = false,
@@ -212,8 +205,8 @@ return {
         "typescriptreact",
         "vue",
         "graphql",
-        "gql"
-      }
+        "gql",
+      },
     })
   end,
 }

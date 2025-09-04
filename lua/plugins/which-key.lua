@@ -1,4 +1,4 @@
-return {              -- Useful plugin to show you pending keybinds.
+return { -- Useful plugin to show you pending keybinds.
   "folke/which-key.nvim",
   event = "VeryLazy", -- Sets the loading event to 'VimEnter'
 
@@ -28,7 +28,7 @@ return {              -- Useful plugin to show you pending keybinds.
     ---@type wk.Win.opts
     win = {
       border = "single",
-    }
+    },
   },
   keys = {
     {
