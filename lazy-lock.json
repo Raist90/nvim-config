@@ -20,7 +20,7 @@
   "mini.files": { "branch": "main", "commit": "34a730a6bdb09c3e6755fe34b20a78a5d81d21c4" },
   "mini.indentscope": { "branch": "main", "commit": "8af2569a7d7fd37300dfa760e44e71efbbf322fd" },
   "mini.pairs": { "branch": "main", "commit": "6e1cc569130f25b2c6fa16d8b21b31ddb1420a4a" },
-  "nvim-lspconfig": { "branch": "master", "commit": "7de54fc6cae5080a656329a9c2f2dff03d914cdd" },
+  "nvim-lspconfig": { "branch": "master", "commit": "c8b90ae5cbe21d547b342b05c9266dcb8ca0de8f" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-web-devicons": { "branch": "master", "commit": "6e51ca170563330e063720449c21f43e27ca0bc1" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
