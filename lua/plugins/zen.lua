@@ -3,13 +3,7 @@ return {
   name = "Zen",
   event = "BufEnter",
   config = function()
-    require("zen").setup({
-      window = {
-        width = 120,
-        height = 1,
-      },
-      zindex = 40,
-    })
+    require("zen").setup()
 
     vim.keymap.set("n", "<leader>Z", function()
       require("zen").toggle()
