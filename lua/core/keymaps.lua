@@ -39,9 +39,9 @@ vim.keymap.set("n", "<leader>nh", function()
 end, { desc = "Show Notification History" })
 
 -- Toggle Zen Mode
--- vim.keymap.set("n", "<leader>Z", function()
---   require("snacks").zen()
--- end, { desc = "Toggle Zen Mode" })
+vim.keymap.set("n", "<leader>Z", function()
+  require("snacks").zen()
+end, { desc = "Toggle Zen Mode" })
 
 -- Open vim.diagnostic.float()
 vim.keymap.set("n", "<leader>ld", function()

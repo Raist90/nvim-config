@@ -1,6 +1,7 @@
 return {
   "Raist90/zen.nvim",
   name = "Zen",
+  enabled = false,
   event = "BufEnter",
   config = function()
     require("zen").setup()
