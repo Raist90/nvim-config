@@ -6,7 +6,7 @@ return {
     require("catppuccin").setup({
       float = {
         solid = true,
-        transparent = false,
+        transparent = true,
       },
       no_italic = true,
       transparent_background = false,
