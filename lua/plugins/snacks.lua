@@ -54,7 +54,7 @@ return {
         height = 0,
         backdrop = {
           transparent = false,
-          blend = 99,
+          blend = 70,
         },
         keys = { q = false },
         zindex = 40,
