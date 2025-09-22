@@ -51,3 +51,10 @@ end, { desc = "Open Diagnostic Float" })
 -- Copilot chat keymaps
 vim.keymap.set("n", "<leader>Co", "<cmd>CopilotChatOpen<cr>", { desc = "Copilot Chat Prompts" })
 vim.keymap.set("n", "<leader>Cc", "<cmd>CopilotChatClose<cr>", { desc = "Copilot Chat Close" })
+
+-- Terminal
+-- Open terminal with <leader>tt
+keymap("n", "<leader>tt", "<cmd>terminal<cr>", { desc = "Open Terminal" })
+
+-- Close terminal with double <esc>
+keymap("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Close Terminal" })
