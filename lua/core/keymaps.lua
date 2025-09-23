@@ -55,6 +55,3 @@ vim.keymap.set("n", "<leader>Cc", "<cmd>CopilotChatClose<cr>", { desc = "Copilot
 -- Terminal
 -- Open terminal with <leader>tt
 keymap("n", "<leader>tt", "<cmd>terminal<cr>", { desc = "Open Terminal" })
-
--- Close terminal with double <esc>
-keymap("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Close Terminal" })
