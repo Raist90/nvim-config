@@ -53,7 +53,7 @@ return {
 
     map("<leader>ff", require("fzf-lua").files, "Find Files")
     map("<leader>fw", require("fzf-lua").live_grep, "Find Words")
-    map("<leader>f/", require("fzf-lua").grep_curbuf, "Grep current buffer")
+    map("<leader>f/", require("fzf-lua").lgrep_curbuf, "Grep current buffer")
     map("<leader>gh", require("fzf-lua").git_bcommits, "Git History")
     map("<leader>fh", require("fzf-lua").git_hunks, "Find Git hunks")
     map("<leader>fb", require("fzf-lua").buffers, "Find buffers")
