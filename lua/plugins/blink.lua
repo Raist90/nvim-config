@@ -78,8 +78,9 @@ return { -- Autocompletion
 
       ["<Up>"] = { "select_prev", "fallback" },
       ["<Down>"] = { "select_next", "fallback" },
-      ["<S-Tab>"] = { "select_prev", "fallback" },
-      ["<Tab>"] = { "select_next", "fallback" },
+      ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+      ["<C-n>"] = { "select_next", "fallback_to_mappings" },
+
       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
       --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
     },
