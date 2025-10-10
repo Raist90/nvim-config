@@ -12,7 +12,7 @@ return {
     bigfile = { enabled = true },
     dashboard = { enabled = false },
     indent = {
-      enabled = false,
+      enabled = true,
       indent = {
         hl = "SnacksIndent",
         -- char = "┊",
@@ -28,6 +28,7 @@ return {
     lazygit = { enabled = false },
     notifier = { enabled = true },
     quickfile = { enabled = false },
+    scope = { enabled = true },
     statuscolumn = { enabled = false },
     terminal = {
       enabled = false,
