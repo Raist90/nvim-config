@@ -23,7 +23,7 @@ require("lazy").setup({
   -- Configure any other settings here. See the documentation for more details.
   -- automatically check for plugin updates
   checker = { enabled = true },
-  install = { colorscheme = { "catppuccin-mocha" } },
+  install = { colorscheme = { "catppuccin-macchiato" } },
 
   ui = {
     border = "single",
