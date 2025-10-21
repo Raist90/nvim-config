@@ -105,8 +105,7 @@ return { -- Autocompletion
     signature = { enabled = true, window = { border = "single", show_documentation = true } },
 
     sources = {
-      -- default = { "lsp", "path", "snippets", "lazydev" },
-      default = { "lsp", "path", "lazydev" },
+      default = { "lsp", "path", "snippets", "lazydev" },
       providers = {
         lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
       },
