@@ -44,6 +44,15 @@ opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 -- Preview substitutions live, as you type!
 opt.inccommand = "split"
 
+-- Diff options
+-- See `:help diffopt`
+opt.diffopt = {
+  "filler",
+  "internal",
+  "algorithm:histogram",
+  "indent-heuristic",
+}
+
 -- Nerd font icons
 vim.g.have_nerd_font = true
 
