@@ -28,6 +28,7 @@ return {
     lazygit = { enabled = false },
     notifier = { enabled = true },
     quickfile = { enabled = false },
+    picker = { enabled = false },
     scope = { enabled = true },
     statuscolumn = { enabled = false },
     terminal = {

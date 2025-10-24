@@ -10,10 +10,6 @@ return {
       -- See Configuration section for options
       -- model = "claude-sonnet-4",
       model = "gpt-4.1",
-      picker = {
-        enabled = true,
-        ui_select = true,
-      },
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
