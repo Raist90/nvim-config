@@ -9,6 +9,9 @@ return {
   config = function()
     vim.g.opencode_opts = {
       -- Your configuration, if any — see `lua/opencode/config.lua`
+      provider = {
+        enabled = "snacks",
+      }
     }
 
     -- Required for `vim.g.opencode_opts.auto_reload`
