@@ -15,7 +15,7 @@
   "lazydev.nvim": { "branch": "main", "commit": "12532f81ef8aa35dd4a44713ea32e760d643675c" },
   "lazygit.nvim": { "branch": "main", "commit": "2305deed25bc61b866d5d39189e9105a45cf1cfb" },
   "lualine.nvim": { "branch": "master", "commit": "3946f0122255bc377d14a59b27b609fb3ab25768" },
-  "mason-lspconfig.nvim": { "branch": "main", "commit": "1d77bd86e1c3eaa777010c95dad455b83823f247" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "35ec9e1425c2f9a36f556893336af4f302c63214" },
   "mason-tool-installer.nvim": { "branch": "main", "commit": "517ef5994ef9d6b738322664d5fdd948f0fdeb46" },
   "mason.nvim": { "branch": "main", "commit": "ad7146aa61dcaeb54fa900144d768f040090bff0" },
   "mini.files": { "branch": "main", "commit": "d5c1337441aff47768288e8562eb66ae8b5171a9" },
@@ -27,6 +27,6 @@
   "opencode.nvim": { "branch": "main", "commit": "3d534e2fdc734f510d5e667f0360501ab4470255" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
   "schemastore.nvim": { "branch": "main", "commit": "4341619da06779ae310ee9c3d6d70edfefed7152" },
-  "snacks.nvim": { "branch": "main", "commit": "758bbfa13a3c26d80069a9f621fcfd0f0dfc608e" },
+  "snacks.nvim": { "branch": "main", "commit": "e2c1c527e40aecd6d1ac011aef6d3c28a208a9ec" },
   "which-key.nvim": { "branch": "main", "commit": "b4177e3eaf15fe5eb8357ebac2286d488be1ed00" }
 }
