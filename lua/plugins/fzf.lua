@@ -68,7 +68,7 @@ return {
     map("gy", require("fzf-lua").lsp_definitions, "Goto type definition")
     map("<leader>jj", require("fzf-lua").jumps, "Search jumplist")
     map("<leader>ft", require("fzf-lua").colorschemes, "Search themes")
-    map("<leader>fc", require("fzf-lua").commands, "Search commands")
+    map("<leader>fc", require("fzf-lua").git_commits, "Search git commits")
     map("<leader>fm", require("fzf-lua").manpages, "Search manpages")
     map("gr", require("fzf-lua").lsp_references, "Find references")
     map("<leader>fk", require("fzf-lua").keymaps, "Find keymaps")
