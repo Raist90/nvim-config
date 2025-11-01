@@ -23,33 +23,33 @@ keymap("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", { desc = "Git Blame Li
 keymap("n", "<leader>gB", "<cmd>Gitsigns blame<cr>", { desc = "Git Blame" })
 
 -- Open the quickfix list
-vim.keymap.set("n", "<leader>qo", function()
+keymap("n", "<leader>qo", function()
   vim.cmd("copen")
 end, { desc = "Open Quickfix List" })
 
 -- Delete (clear) the quickfix list
-vim.keymap.set("n", "<leader>qc", function()
+keymap("n", "<leader>qc", function()
   vim.fn.setqflist({})
   vim.cmd("cclose")
 end, { desc = "Clear Quickfix List" })
 
 -- Toggle the notification history
-vim.keymap.set("n", "<leader>nh", function()
+keymap("n", "<leader>nh", function()
   require("snacks").notifier.show_history()
 end, { desc = "Show Notification History" })
 
 -- Toggle Zen Mode
-vim.keymap.set("n", "<leader>Z", function()
+keymap("n", "<leader>Z", function()
   require("snacks").zen()
 end, { desc = "Toggle Zen Mode" })
 
 -- Open vim.diagnostic.float()
-vim.keymap.set("n", "<leader>ld", function()
+keymap("n", "<leader>ld", function()
   vim.diagnostic.open_float(nil, { focusable = true, scope = "cursor" })
 end, { desc = "Open Diagnostic Float" })
 
 -- Copilot chat keymaps
-vim.keymap.set("n", "<leader>Co", "<cmd>CopilotChatOpen<cr>", { desc = "Copilot Chat Prompts" })
+keymap("n", "<leader>Co", "<cmd>CopilotChatOpen<cr>", { desc = "Copilot Chat Prompts" })
 vim.keymap.set("n", "<leader>Cc", "<cmd>CopilotChatClose<cr>", { desc = "Copilot Chat Close" })
 
 -- Terminal
