@@ -14,6 +14,7 @@ return {
         blink_cmp = {
           style = "bordered",
         },
+        diffview = true,
         fzf = true,
         neotree = true,
         dashboard = true,
