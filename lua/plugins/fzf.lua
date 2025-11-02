@@ -14,9 +14,6 @@ return {
           ["enter"] = require("fzf-lua").actions.file_edit_or_qf,
         },
       },
-      buffers = {
-        keymap = { builtin = { ["<C-d>"] = false } },
-      },
       keymap = {
         builtin = {
           true,
