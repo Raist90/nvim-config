@@ -9,7 +9,7 @@ return {
         transparent = true,
       },
       no_italic = true,
-      transparent_background = false,
+      transparent_background = true,
       integrations = {
         blink_cmp = {
           style = "bordered",
