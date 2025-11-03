@@ -45,9 +45,6 @@ return {
       -- list of formatter and linter for mason to install
       ensure_installed = {
         "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint", -- python linter
         "shfmt", -- sh formatter with bash support
       },
     },
