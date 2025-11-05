@@ -9,21 +9,11 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
-        local map = function(keys, func, desc, mode)
-          mode = mode or "n"
-          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-        end
-
-        -- Replace lsp hover ui
-        vim.keymap.set("n", "K", function()
-          vim.lsp.buf.hover({
-            border = "single",
-          })
-        end, { buffer = event.buf, desc = "LSP: Hover" })
-
-        -- Rename the variable under your cursor.
-        --  Most Language Servers support renaming across files, etc.
-        map("<leader>lr", vim.lsp.buf.rename, "Rename")
+        -- TODO: make this one a util
+        -- local map = function(keys, func, desc, mode)
+        --   mode = mode or "n"
+        --   vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+        -- end
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client
@@ -64,16 +54,6 @@ return {
               vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
             end,
           })
-        end
-
-        -- The following code creates a keymap to toggle inlay hints in your
-        -- code, if the language server you are using supports them
-        --
-        -- This may be unwanted, since they displace some of your code
-        if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-          map("<leader>lh", function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-          end, "Toggle Inlay Hints")
         end
       end,
     })
@@ -126,29 +106,6 @@ return {
           },
         },
       },
-    })
-
-    vim.lsp.config("vue_ls", {
-      settings = {
-        vue = {
-          server = {
-            includeLanguages = { "vue", "typescript" },
-          },
-        },
-      },
-      init_options = {
-        -- https://github.com/mason-org/mason-lspconfig.nvim/issues/587
-        typescript = {
-          tsdk = "",
-        },
-        vue = {
-          hybridMode = false,
-        },
-      },
-      on_attach = function(client)
-        -- Disable formatting capabilities for Volar
-        client.server_capabilities.documentFormattingProvider = false
-      end,
     })
 
     vim.lsp.config("emmet_language_server", {
