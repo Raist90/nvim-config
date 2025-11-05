@@ -2,6 +2,8 @@ vim.cmd("let g:netrw_banner = 0")
 
 local opt = vim.opt
 
+opt.winborder = "single"
+
 -- Don't show the ~ at the end of the buffer
 opt.fillchars:append({ eob = " " })
 
