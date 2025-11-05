@@ -9,12 +9,6 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
-        -- TODO: make this one a util
-        -- local map = function(keys, func, desc, mode)
-        --   mode = mode or "n"
-        --   vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-        -- end
-
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client
         ---@param method vim.lsp.protocol.Method
