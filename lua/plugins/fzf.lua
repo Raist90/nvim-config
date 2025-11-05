@@ -67,9 +67,9 @@ return {
     map("<leader>ft", require("fzf-lua").colorschemes, "Search themes")
     map("<leader>fc", require("fzf-lua").git_commits, "Search git commits")
     map("<leader>fm", require("fzf-lua").manpages, "Search manpages")
-    map("gr", require("fzf-lua").lsp_references, "Find references")
+    map("grr", require("fzf-lua").lsp_references, "Find references")
     map("<leader>fk", require("fzf-lua").keymaps, "Find keymaps")
-    map("<leader>la", function()
+    map("gra", function()
       -- https://github.com/ibhagwan/fzf-lua/issues/1295
       require("fzf-lua").lsp_code_actions({
         previewer = false,
