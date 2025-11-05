@@ -102,6 +102,29 @@ return {
       },
     })
 
+    vim.lsp.config("vue_ls", {
+      settings = {
+        vue = {
+          server = {
+            includeLanguages = { "vue", "typescript" },
+          },
+        },
+      },
+      init_options = {
+        -- https://github.com/mason-org/mason-lspconfig.nvim/issues/587
+        typescript = {
+          tsdk = "",
+        },
+        vue = {
+          hybridMode = false,
+        },
+      },
+      on_attach = function(client)
+        -- Disable formatting capabilities for Volar
+        client.server_capabilities.documentFormattingProvider = false
+      end,
+    })
+
     vim.lsp.config("emmet_language_server", {
       filetypes = { "html", "css", "typescriptreact", "javascriptreact", "vue" },
     })
