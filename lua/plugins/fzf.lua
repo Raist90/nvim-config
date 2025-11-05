@@ -1,11 +1,8 @@
+local map = require("util").map
+
 return {
   "ibhagwan/fzf-lua",
   config = function()
-    local map = function(keys, func, desc, mode)
-      mode = mode or "n"
-      vim.keymap.set(mode, keys, func, { desc = desc })
-    end
-
     require("fzf-lua").setup({
       "default",
       actions = {
