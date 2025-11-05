@@ -66,6 +66,7 @@ return {
     map("<leader>fm", require("fzf-lua").manpages, "Search manpages")
     map("grr", require("fzf-lua").lsp_references, "Find references")
     map("<leader>fk", require("fzf-lua").keymaps, "Find keymaps")
+    map("<leader>fq", require("fzf-lua").quickfix, "Find quickfix items")
     map("gra", function()
       -- https://github.com/ibhagwan/fzf-lua/issues/1295
       require("fzf-lua").lsp_code_actions({
