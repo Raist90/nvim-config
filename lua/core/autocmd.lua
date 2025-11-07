@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Open help files in a vertical split
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "help",
+  pattern = { "help", "man" },
   command = "wincmd L",
 })
 
