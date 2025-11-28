@@ -39,35 +39,32 @@ return {
         theme = "catppuccin",
       },
       sections = {
-        lualine_a = { {
-          "mode",
-          fmt = function(s)
-            return mode_map[s] or s
-          end,
-        } },
+        lualine_a = {
+          {
+            "mode",
+            fmt = function(s)
+              return mode_map[s] or s
+            end,
+          },
+        },
         lualine_b = { "branch", "diff", { "diagnostics", icons_enabled = false } },
         lualine_c = {
           { "filename", path = 1 },
         },
         lualine_x = {
-          {
-            "encoding",
-            fmt = function(s)
-              return s ~= "utf-8" and s
-            end,
-          },
-          {
-            "fileformat",
-            icons_enabled = false,
-            fmt = function(s)
-              return s ~= "unix" and s
-            end,
-          },
+          { "filetype" },
         },
         -- stylua: ignore end
-        lualine_y = { { "filetype" } },
-        lualine_z = { "location" },
+        lualine_y = {
+          { "location" },
+        },
+        lualine_z = {
+          function()
+            return " " .. os.date("%R")
+          end,
+        },
       },
+      extensions = { "fzf", "quickfix" },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
