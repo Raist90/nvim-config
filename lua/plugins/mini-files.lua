@@ -3,6 +3,9 @@ return {
   version = false,
   config = function()
     require("mini.files").setup({
+      -- Disable icons
+      content = { prefix = function() end },
+
       -- Open mini files in the current work directory
       vim.keymap.set("n", "<leader>e", function()
         local buf_name = vim.api.nvim_buf_get_name(0)
