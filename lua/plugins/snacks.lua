@@ -52,7 +52,7 @@ return {
         enter = true,
         fixbuf = false,
         minimal = false,
-        width = 0.8,
+        width = 0.7,
         height = 0,
         backdrop = {
           transparent = false,
