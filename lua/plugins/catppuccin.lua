@@ -40,7 +40,7 @@ return {
         return {
           LazyGitBorder = { fg = colors.lavender },
 
-          WinbarNC = { fg = colors.overlay0, bg = colors.base },
+          WinbarNC = { fg = colors.subtext0, bg = colors.base },
           WinbarNormal = { fg = colors.text, bg = colors.base },
           WinbarFilename = { fg = colors.base, bg = colors.blue, style = { "bold" } },
           WinbarLocation = { fg = colors.blue, bg = colors.none },

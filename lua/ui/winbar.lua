@@ -30,13 +30,6 @@ Winbar.build = function(isActive)
     -- Spacer
     highlight("%#WinbarNormal#"),
     "%=",
-
-    -- -- Other stuff
-    -- highlight("%#WinbarDevinfo#"),
-    -- " ",
-    --
-    -- "%#Normal#",
-    -- " ",
   })
 
   return winbar
