@@ -10,6 +10,10 @@ local function location_component()
 end
 
 Winbar.build = function(isActive)
+  if vim.bo.buftype == "terminal" or vim.bo.buftype == "quickfix" then
+    return ""
+  end
+
   local highlight = function(hl)
     return isActive and hl or "%#WinbarNC#"
   end
