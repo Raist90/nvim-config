@@ -24,8 +24,11 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
   install = { colorscheme = { "catppuccin-macchiato" } },
+  -- Disable notifications while tweaking plugins
+  change_detection = { notify = false },
 
   ui = {
     border = "single",
   },
 })
+require("ui")

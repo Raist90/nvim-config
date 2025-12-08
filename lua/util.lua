@@ -1,5 +1,21 @@
 local M = {}
 
+local function on_attach(client, bufnr)
+  local disable_format = {
+    vtsls = true,
+    vue_ls = true,
+  }
+
+  if disable_format[client.name] then
+    client.server_capabilities.documentFormattingProvider = false
+  end
+
+  if not (client.name == "vtsls" and vim.bo.filetype == "vue") then
+    local navic = require("nvim-navic")
+    navic.attach(client, bufnr)
+  end
+end
+
 ---@param keys string
 ---@param func string|function
 ---@param desc string
@@ -9,6 +25,7 @@ local map = function(keys, func, desc, mode)
   vim.keymap.set(mode, keys, func, { desc = desc })
 end
 
+M.on_attach = on_attach
 M.map = map
 
 return M

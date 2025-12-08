@@ -1,3 +1,5 @@
+local on_attach = require("util").on_attach
+
 return {
   filetypes = {
     "javascript",
@@ -6,9 +8,7 @@ return {
     "typescriptreact",
     "vue",
   },
-  on_attach = function(client, bufnr)
-    client.server_capabilities.documentFormattingProvider = false
-  end,
+  on_attach = on_attach,
   settings = {
     vtsls = {
       tsserver = {

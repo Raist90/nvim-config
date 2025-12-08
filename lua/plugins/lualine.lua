@@ -1,8 +1,5 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
   config = function()
     -- short mode
     local mode_map = {
@@ -27,6 +24,7 @@ return {
 
     require("lualine").setup({
       options = {
+        icons_enabled = false,
         globalstatus = true,
         -- no section seperator
         -- and pipe as component seperator
@@ -51,30 +49,17 @@ return {
         lualine_c = {
           { "filename", path = 1 },
         },
-        lualine_x = {
-          { "filetype" },
-        },
-        -- stylua: ignore end
+        lualine_x = {},
         lualine_y = {
-          { "location" },
+          { "lsp_status" },
         },
         lualine_z = {
           function()
-            return " " .. os.date("%R")
+            return os.date("%R")
           end,
         },
       },
       extensions = { "fzf", "quickfix" },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {
-          { "filename", path = 1 },
-        },
-        lualine_x = { "filetype" },
-        lualine_y = {},
-        lualine_z = {},
-      },
     })
   end,
 }

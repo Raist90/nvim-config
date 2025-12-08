@@ -1,5 +1,6 @@
 return {
   "catppuccin/nvim",
+  enabled = true,
   name = "catppuccin",
   priority = 1000,
   config = function()
@@ -21,7 +22,10 @@ return {
         notify = true,
         treesitter = true,
         which_key = true,
-        gitsigns = true,
+        gitsigns = {
+          enabled = true,
+          transparent = true,
+        },
         mason = true,
         mini = {
           enabled = true,
@@ -35,6 +39,11 @@ return {
       custom_highlights = function(colors)
         return {
           LazyGitBorder = { fg = colors.lavender },
+
+          WinbarNC = { fg = colors.overlay0, bg = colors.base },
+          WinbarNormal = { fg = colors.text, bg = colors.base },
+          WinbarFilename = { fg = colors.base, bg = colors.blue, style = { "bold" } },
+          WinbarLocation = { fg = colors.blue, bg = colors.none },
         }
       end,
     })

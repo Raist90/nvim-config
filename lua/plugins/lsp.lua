@@ -1,3 +1,5 @@
+local on_attach = require("util").on_attach
+
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -100,6 +102,7 @@ return {
           },
         },
       },
+      on_attach = on_attach,
     })
 
     vim.lsp.config("vue_ls", {
@@ -119,10 +122,7 @@ return {
           hybridMode = false,
         },
       },
-      on_attach = function(client)
-        -- Disable formatting capabilities for Volar
-        client.server_capabilities.documentFormattingProvider = false
-      end,
+      on_attach = on_attach,
     })
 
     vim.lsp.config("emmet_language_server", {
