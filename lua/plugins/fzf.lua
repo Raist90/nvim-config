@@ -12,6 +12,10 @@ return {
         },
       },
       keymap = {
+        buffers = {
+          true,
+          ["ctrl-q"] = "select-all+accept",
+        },
         builtin = {
           true,
           ["<C-d>"] = "preview-page-down",

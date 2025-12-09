@@ -31,4 +31,3 @@ require("lazy").setup({
     border = "single",
   },
 })
-require("ui")

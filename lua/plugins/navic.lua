@@ -5,7 +5,7 @@ return {
     require("nvim-navic").setup({
       depth_limit = 3,
       depth_limit_indicator = "..",
-      icons = { enabled = false },
+      icons = { enabled = true },
       safe_output = true,
     })
   end,

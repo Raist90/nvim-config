@@ -18,6 +18,10 @@ return {
         close = "q",
         reset = "<BS>",
       },
+
+      options = {
+        use_as_default_explorer = false,
+      },
     })
   end,
 }
