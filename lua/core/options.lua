@@ -1,5 +1,9 @@
 local opt = vim.opt
 
+vim.g.netrw_banner = 0
+vim.g.netrw_keepdir = 0
+vim.g.netrw_winsize = 15
+
 opt.winborder = "single"
 
 -- Don't show the ~ at the end of the buffer

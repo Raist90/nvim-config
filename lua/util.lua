@@ -9,11 +9,6 @@ local function on_attach(client, bufnr)
   if disable_format[client.name] then
     client.server_capabilities.documentFormattingProvider = false
   end
-
-  if not (client.name == "vtsls" and vim.bo.filetype == "vue") then
-    local navic = require("nvim-navic")
-    navic.attach(client, bufnr)
-  end
 end
 
 ---@param keys string

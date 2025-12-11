@@ -60,29 +60,6 @@ return {
         },
       },
       extensions = { "fzf", "quickfix" },
-      winbar = {
-        lualine_a = {
-          {
-            "filename",
-            color = "WinbarLocation",
-          },
-          {
-            function()
-              local navic = require("nvim-navic")
-              return navic.get_location()
-            end,
-            color = "WinbarLocation",
-          },
-        },
-      },
-      inactive_winbar = {
-        lualine_a = {
-          {
-            "filename",
-            color = "WinbarNC",
-          },
-        },
-      },
     })
   end,
 }
