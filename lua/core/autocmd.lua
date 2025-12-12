@@ -98,3 +98,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     end)
   end,
 })
+
+-- Wipe netrw buffer when closed to avoid cluttering buffers list
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    vim.bo.bufhidden = "wipe"
+  end,
+})

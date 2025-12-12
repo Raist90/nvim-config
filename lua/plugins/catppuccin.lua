@@ -40,10 +40,16 @@ return {
         return {
           LazyGitBorder = { fg = colors.lavender },
 
-          WinbarNC = { fg = colors.subtext0, bg = colors.base },
-          WinbarNormal = { fg = colors.text, bg = colors.base },
-          WinbarFilename = { fg = colors.base, bg = colors.blue, style = { "bold" } },
-          WinbarLocation = { fg = colors.blue, bg = colors.none },
+          WinbarActive = { fg = colors.blue, style = { "bold" } },
+          WinbarInactive = { fg = colors.subtext0 },
+
+          Statusline = { fg = colors.text },
+          StatuslineGit = { fg = colors.blue, style = { "bold" } },
+          StatuslineError = { fg = colors.red },
+          StatuslineWarn = { fg = colors.yellow },
+          StatuslineInfo = { fg = colors.sky },
+          StatuslineHint = { fg = colors.teal },
+          StatuslineTime = { fg = colors.blue, style = { "bold" } },
         }
       end,
     })
