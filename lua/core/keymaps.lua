@@ -45,3 +45,11 @@ end, "Copilot Chat Close")
 map("<leader>tt", function()
   vim.cmd("terminal")
 end, "Open Terminal")
+
+vim.api.nvim_create_user_command("ReloadColors", function()
+  package.loaded["core.colorscheme.palette"] = nil
+  package.loaded["core.colorscheme.groups"] = nil
+  package.loaded["core.colorscheme"] = nil
+  require("core.colorscheme").setup()
+  print("Colorscheme reloaded!")
+end, { desc = "Reload custom colorscheme" })

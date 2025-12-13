@@ -51,10 +51,11 @@ return {
       },
       fzf_colors = {
         ["gutter"] = "-1",
-        ["fg+"] = { "fg", "TelescopeSelection" },
-        ["bg+"] = { "bg", "TelescopeSelection" },
-        ["hl+"] = { "fg", "TelescopeSelection" },
-        ["pointer"] = { "fg", "TelescopeSelection" },
+        ["fg+"] = { "fg", "FzfLuaCursorLine" },
+        ["bg+"] = { "bg", "FzfLuaCursorLine" },
+        ["hl+"] = { "fg", "FzfLuaSearch" },
+        ["pointer"] = { "fg", "FzfLuaPointer" },
+        ["marker"] = { "fg", "FzfLuaMarker" },
       },
     })
 
