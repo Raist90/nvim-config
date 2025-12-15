@@ -235,7 +235,7 @@ M.setup = function()
 
     -- Snacks indent
     SnacksIndent = { fg = C.surface2 }, -- Normal indent guides
-    SnacksIndentScope = { fg = C.overlay1 }, -- Active scope highlight (soft gray-blue)
+    SnacksIndentScope = { fg = C.text }, -- Active scope highlight
 
     -- Blink cmp
     BlinkCmpMenu = { fg = C.text, bg = C.none },
