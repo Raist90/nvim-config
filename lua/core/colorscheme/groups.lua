@@ -63,10 +63,10 @@ M.setup = function()
     CursorLine = { bg = C.surface0 },
     Directory = { fg = C.blue },
 
-    DiffAdd = { bg = C.surface0, fg = C.green },
-    DiffChange = { bg = C.surface0, fg = C.blue },
-    DiffDelete = { bg = C.surface0, fg = C.red },
-    DiffText = { bg = C.surface1, fg = C.blue },
+    DiffAdd = { fg = C.text, bg = "#273429" }, -- Delta plus-style
+    DiffChange = { fg = C.text, bg = "#273429" }, -- Same as additions
+    DiffDelete = { fg = C.text, bg = "#2e2328" }, -- Delta minus-style
+    DiffText = { fg = C.text, bg = "#3a4a3d", bold = true }, -- Delta plus-emph-style (emphasized green)
 
     EndOfBuffer = { fg = C.base },
     ErrorMsg = { fg = C.red, bold = true },
@@ -163,14 +163,14 @@ M.setup = function()
     Changed = { fg = C.blue },
     Removed = { fg = C.red },
 
-    diffAdded = { fg = C.green },
-    diffRemoved = { fg = C.red },
-    diffChanged = { fg = C.blue },
-    diffOldFile = { fg = C.yellow },
-    diffNewFile = { fg = C.orange },
-    diffFile = { fg = C.blue },
-    diffLine = { fg = C.overlay0 },
-    diffIndexLine = { fg = C.teal },
+    diffAdded = { fg = C.green, bold = true }, -- Green for + lines
+    diffRemoved = { fg = C.red, bold = true }, -- Red for - lines
+    diffChanged = { fg = C.text }, -- Normal text for changed context
+    diffOldFile = { fg = C.red, bold = true }, -- Red for --- old file
+    diffNewFile = { fg = C.green, bold = true }, -- Green for +++ new file
+    diffFile = { fg = C.text, bold = true }, -- Normal text bold for diff --git
+    diffLine = { fg = C.green, bold = true }, -- Green for @@ hunk headers (like additions)
+    diffIndexLine = { fg = C.overlay1 }, -- Subtle for index lines
 
     -- Quickfix
     qfLineNr = { fg = C.yellow },
