@@ -394,6 +394,7 @@ M.setup = function()
     ["@field.lua"] = { fg = C.text },
     ["@function.call.lua"] = { fg = C.blue },
     ["@variable.builtin.lua"] = { fg = C.cyan }, -- self
+    ["@comment.todo.comment"] = { link = "Comment" },
 
     -- Go specific
     ["@type.go"] = { fg = C.cyan },
