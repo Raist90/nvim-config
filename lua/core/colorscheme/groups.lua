@@ -51,7 +51,7 @@ M.setup = function()
     Italic = { italic = true },
 
     Error = { fg = C.red, bold = true }, -- Red reserved for errors only
-    Todo = { bg = C.yellow, fg = C.base, bold = true },
+    Todo = { link = "Comment" },
 
     -- UI elements
     ColorColumn = { bg = C.surface0 },
@@ -394,7 +394,6 @@ M.setup = function()
     ["@field.lua"] = { fg = C.text },
     ["@function.call.lua"] = { fg = C.blue },
     ["@variable.builtin.lua"] = { fg = C.cyan }, -- self
-    ["@comment.todo.comment"] = { link = "Comment" },
 
     -- Go specific
     ["@type.go"] = { fg = C.cyan },
