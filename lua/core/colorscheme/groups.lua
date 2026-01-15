@@ -109,13 +109,13 @@ M.setup = function()
 
     -- Custom Statusline components
     Statusline = { fg = C.text, bg = C.none },
-    StatuslineGit = { fg = C.purple, bg = C.none, bold = true },
+    StatuslineGit = { fg = C.purple, bg = C.none },
     StatuslineLSP = { fg = C.blue, bg = C.none },
     StatuslineError = { fg = C.red, bg = C.none },
     StatuslineWarn = { fg = C.yellow, bg = C.none },
     StatuslineInfo = { fg = C.blue, bg = C.none },
     StatuslineHint = { fg = C.teal, bg = C.none },
-    StatuslineTime = { fg = C.fg_dim, bg = C.none, bold = true },
+    StatuslineTime = { fg = C.fg_dim, bg = C.none },
 
     TabLine = { bg = C.surface0, fg = C.overlay1 },
     TabLineFill = { bg = C.surface0 },
@@ -134,7 +134,7 @@ M.setup = function()
     WinBarNC = { fg = C.overlay1, bg = C.none },
 
     -- Custom Winbar components
-    WinbarActive = { fg = C.blue, bg = C.none, bold = true },
+    WinbarActive = { fg = C.blue, bg = C.none },
     WinbarInactive = { fg = C.overlay1, bg = C.none },
 
     -- LSP
