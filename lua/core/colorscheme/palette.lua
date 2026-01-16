@@ -27,15 +27,12 @@ return {
   red = "#f47067", -- Constants, special, errors
 
   -- Aliases for compatibility
-  mauve = "#dcbdfb", -- Same as purple
   lavender = "#dcbdfb",
   sky = "#6cb6ff",
-  sapphire = "#96d0ff",
   blue_bright = "#96d0ff",
 
   green = "#8ddb8c", -- Git additions, success
   teal = "#76e3ea",
-  cyan = "#76e3ea",
   green_dim = "#57ab5a",
 
   yellow = "#e0823d", -- Warnings (orange-amber)
@@ -43,8 +40,6 @@ return {
   peach = "#f69d50",
   orange = "#f69d50",
 
-  gold = "#d4a574", -- Gold/amber for constants/types (warm, sophisticated)
-  rose = "#e5a0c5", -- Muted pink/rose
   pink = "#f47067",
   flamingo = "#adbac7", -- Use normal text color for identifiers
 
