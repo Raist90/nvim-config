@@ -2,11 +2,16 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   lazy = false,
-  commit = "15b3416cc1f557c4932468e512a0bd45871167bc", -- Pin to working version
+  -- commit = "15b3416cc1f557c4932468e512a0bd45871167bc",
   build = ":TSUpdate",
   branch = "main",
   config = function()
     local ts = require("nvim-treesitter")
+    -- NOTE: markdown and markdown_inline are excluded because they cause
+    -- Neovim to hang when parsing LSP hover floats and notification windows.
+    -- This is likely a bug in the parser or incompatibility with float buffers.
+    -- Basic markdown highlighting still works without treesitter.
+    -- The commented commit had a compatible parser
     local parsers = {
       "bash",
       "comment",
@@ -25,8 +30,8 @@ return {
       "json5",
       "lua",
       "make",
-      "markdown",
-      "markdown_inline",
+      -- "markdown",
+      -- "markdown_inline",
       "regex",
       "scss",
       "sql",
