@@ -2,6 +2,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   lazy = false,
+  commit = "15b3416cc1f557c4932468e512a0bd45871167bc", -- Pin to working version
   build = ":TSUpdate",
   branch = "main",
   config = function()
