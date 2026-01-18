@@ -117,9 +117,9 @@ M.setup = function()
     StatuslineHint = { fg = C.teal, bg = C.none },
     StatuslineTime = { fg = C.fg_dim, bg = C.none },
 
-    TabLine = { bg = C.surface0, fg = C.overlay1 },
-    TabLineFill = { bg = C.surface0 },
-    TabLineSel = { fg = C.text, bg = C.surface1 },
+    TabLine = { bg = C.none, fg = C.overlay1 },
+    TabLineFill = { bg = C.none },
+    TabLineSel = { fg = C.text, bg = C.none },
 
     Title = { fg = C.blue, bold = true },
 
