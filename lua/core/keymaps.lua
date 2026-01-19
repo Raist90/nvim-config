@@ -46,6 +46,10 @@ map("<leader>tt", function()
   vim.cmd("terminal")
 end, "Open Terminal")
 
+map("<leader>E", function()
+  require("lsplorer").toggle()
+end, "Toggle Lsplorer")
+
 vim.api.nvim_create_user_command("ReloadColors", function()
   package.loaded["core.colorscheme.palette"] = nil
   package.loaded["core.colorscheme.groups"] = nil
