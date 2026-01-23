@@ -47,8 +47,12 @@ map("<leader>tt", function()
 end, "Open Terminal")
 
 map("<leader>E", function()
-  require("lsplorer").toggle()
+  require("lsplorer").toggle_lsplorer()
 end, "Toggle Lsplorer")
+
+-- map("<C-o>", function()
+--   require("lsplorer").focus()
+-- end, "Focus Lsplorer Window")
 
 vim.api.nvim_create_user_command("ReloadColors", function()
   package.loaded["core.colorscheme.palette"] = nil

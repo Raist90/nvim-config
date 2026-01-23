@@ -2,7 +2,8 @@ return {
   -- Base colors (GitHub actual)
   fg = "#adbac7", -- Main text
   fg_dim = "#768390", -- Comments
-  text = "#adbac7",
+  -- text = "#adbac7",
+  text = "#cdcecf",
 
   -- Background colors (for UI elements)
   base = "#22272e",

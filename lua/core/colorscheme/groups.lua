@@ -130,12 +130,16 @@ M.setup = function()
     Whitespace = { fg = C.overlay0 },
     WildMenu = { link = "PmenuSel" },
 
-    WinBar = { fg = C.text, bg = C.none },
+    WinBar = { fg = C.text, bg = C.none, bold = true },
     WinBarNC = { fg = C.overlay1, bg = C.none },
 
     -- Custom Winbar components
     WinbarActive = { fg = C.blue, bg = C.none },
     WinbarInactive = { fg = C.overlay1, bg = C.none },
+
+    -- Lsplorer winbar (dynamic based on focus)
+    LsplorerWinbarActive = { fg = C.blue, bg = C.none },
+    LsplorerWinbarInactive = { fg = C.overlay1, bg = C.none },
 
     -- LSP
     DiagnosticError = { fg = C.red },
@@ -374,7 +378,7 @@ M.setup = function()
     ["@boolean"] = { fg = C.blue_bright },
 
     -- Comments
-    ["@comment"] = { fg = C.fg_dim, italic = true },
+    ["@comment"] = { fg = C.fg_dim },
     ["@comment.documentation"] = { fg = C.overlay1 },
 
     -- JSX/TSX (React)
