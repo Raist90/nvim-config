@@ -13,7 +13,7 @@ local refresh_lsplorer = function(path, buf)
   vim.bo[buf].readonly = true
 end
 
-local function handle_enter()
+local function open_file()
   local buf = vim.api.nvim_get_current_buf()
   local line = vim.api.nvim_get_current_line()
 
@@ -182,9 +182,168 @@ local function add_file()
   end)
 end
 
-A.handle_enter = handle_enter
+-- Helper function to wipe buffers matching a path (for deleted files/directories)
+-- Uses snacks.nvim's approach: find replacement buffer first, then switch windows, then wipe
+local function wipe_buffers_for_path(path, is_dir)
+  -- First pass: collect all buffers that need to be wiped
+  local buffers_to_wipe = {}
+
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      local buf_name = vim.api.nvim_buf_get_name(buf)
+
+      -- Skip empty buffer names (like [No Name] buffers)
+      if buf_name == "" then
+        goto continue
+      end
+
+      local should_wipe = false
+      if is_dir then
+        -- For directories: wipe if buffer is inside this directory
+        local normalized_buf = vim.fn.fnamemodify(buf_name, ":p")
+        local normalized_dir = vim.fn.fnamemodify(path, ":p")
+
+        -- Ensure directory path ends with separator to prevent partial matches
+        -- e.g., /project/src/ should not match /project/src-backup/
+        if not normalized_dir:match("/$") then
+          normalized_dir = normalized_dir .. "/"
+        end
+
+        should_wipe = normalized_buf:sub(1, #normalized_dir) == normalized_dir
+      else
+        -- For files: exact match only
+        local normalized_buf = vim.fn.fnamemodify(buf_name, ":p")
+        local normalized_file = vim.fn.fnamemodify(path, ":p")
+        should_wipe = normalized_buf == normalized_file
+      end
+
+      if should_wipe then
+        table.insert(buffers_to_wipe, buf)
+      end
+
+      ::continue::
+    end
+  end
+
+  -- Second pass: wipe each buffer using snacks.nvim's non-destructive approach
+  for _, buf in ipairs(buffers_to_wipe) do
+    -- Get the most recently used listed buffer (excluding the one being deleted)
+    local info = vim.fn.getbufinfo({ buflisted = 1 })
+    info = vim.tbl_filter(function(b)
+      return b.bufnr ~= buf
+    end, info)
+    table.sort(info, function(a, b)
+      return a.lastused > b.lastused
+    end)
+
+    -- Use most recent buffer, or create a new empty one if none exist
+    local new_buf = info[1] and info[1].bufnr or vim.api.nvim_create_buf(true, false)
+
+    -- Replace buffer in all windows showing it
+    for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+      local win_buf = new_buf
+      -- Try using alternate buffer for each window
+      vim.api.nvim_win_call(win, function()
+        local alt = vim.fn.bufnr("#")
+        win_buf = alt >= 0 and alt ~= buf and vim.bo[alt].buflisted and alt or win_buf
+      end)
+      vim.api.nvim_win_set_buf(win, win_buf)
+    end
+
+    -- Now safe to wipe - buffer not displayed anywhere
+    pcall(vim.cmd, "bwipeout! " .. buf)
+  end
+end
+
+local function delete_file()
+  local buf = vim.api.nvim_get_current_buf()
+  local line = vim.api.nvim_get_current_line()
+
+  -- Skip empty lines
+  if line == "" or line:match("^%s*$") then
+    return
+  end
+
+  -- Extract filename (strip trailing slash for directories)
+  local filename = line:gsub("/$", "")
+
+  -- Don't allow deleting ../
+  if filename == ".." then
+    vim.notify("Cannot delete parent directory link", vim.log.levels.ERROR)
+    return
+  end
+
+  -- Validate filename
+  if not is_valid_filename(filename) then
+    vim.notify("Invalid filename", vim.log.levels.ERROR)
+    return
+  end
+
+  local current_dir = vim.b.lsplorer_dir
+  local full_path = current_dir .. "/" .. filename
+
+  -- Check if file/directory exists
+  local exists = vim.fn.filereadable(full_path) == 1 or vim.fn.isdirectory(full_path) == 1
+  if not exists then
+    vim.notify("File not found: " .. filename, vim.log.levels.ERROR)
+    return
+  end
+
+  local is_dir = vim.fn.isdirectory(full_path) == 1
+
+  -- Prevent deleting the current lsplorer directory
+  local normalized_path = vim.fn.fnamemodify(full_path, ":p")
+  local normalized_current = vim.fn.fnamemodify(current_dir, ":p")
+  if is_dir and normalized_path == normalized_current then
+    vim.notify("Cannot delete current directory", vim.log.levels.ERROR)
+    return
+  end
+
+  -- Show confirmation prompt
+  local prompt_type = is_dir and "directory" or "file"
+  local display_name = is_dir and (filename .. "/") or filename
+
+  vim.ui.input({ prompt = "Delete " .. prompt_type .. " '" .. display_name .. "'? (y/n): " }, function(input)
+    -- Check confirmation
+    if not input or (input ~= "y" and input ~= "Y") then
+      return -- User cancelled
+    end
+
+    -- Attempt deletion
+    local success, err
+    if is_dir then
+      -- Recursive force delete for directories
+      success, err = pcall(vim.fn.delete, full_path, "rf")
+    else
+      -- Normal delete for files
+      success, err = pcall(vim.fn.delete, full_path)
+    end
+
+    -- Handle result
+    if not success then
+      vim.notify("Failed to delete: " .. tostring(err), vim.log.levels.ERROR)
+      return
+    end
+
+    if err ~= 0 then
+      vim.notify("Failed to delete: " .. filename, vim.log.levels.ERROR)
+      return
+    end
+
+    -- Success feedback and refresh
+    vim.notify("Deleted: " .. display_name, vim.log.levels.INFO)
+
+    -- Wipe any open buffers for deleted file/directory (silent)
+    wipe_buffers_for_path(full_path, is_dir)
+
+    A.refresh_lsplorer(current_dir, buf)
+  end)
+end
+
+A.open_file = open_file
 A.refresh_lsplorer = refresh_lsplorer
 A.add_file = add_file
 A.rename_file = rename_file
+A.delete_file = delete_file
 
 return A

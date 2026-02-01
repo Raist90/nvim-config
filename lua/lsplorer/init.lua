@@ -4,10 +4,11 @@ local eza_output_with_parent = require("lsplorer.util").eza_output_with_parent
 local L = {}
 
 -- Actions
-L.handle_enter = require("lsplorer.action").handle_enter
+L.open_file = require("lsplorer.action").open_file
 L.refresh_lsplorer = require("lsplorer.action").refresh_lsplorer
 L.add_file = require("lsplorer.action").add_file
 L.rename_file = require("lsplorer.action").rename_file
+L.delete_file = require("lsplorer.action").delete_file
 
 function L.open_lsplorer()
   -- Get directory from current buffer BEFORE creating scratch buffer
@@ -32,6 +33,9 @@ function L.open_lsplorer()
   local win = vim.api.nvim_get_current_win()
   require("lsplorer.util").setup_winbar(win, require("lsplorer.util").project_root)
 
+  -- Set window-local highlight overrides for dimming when inactive
+  vim.wo[win].winhighlight = "Normal:LsplorerNormal,Directory:LsplorerDirectory"
+
   vim.api.nvim_buf_set_name(0, "Lsplorer")
   vim.bo.readonly = true
   vim.wo.winfixwidth = true
@@ -40,9 +44,10 @@ function L.open_lsplorer()
   vim.cmd("wincmd =")
 
   -- Set up keymaps
-  vim.keymap.set("n", "<CR>", L.handle_enter, { buffer = 0, noremap = true, silent = true })
+  vim.keymap.set("n", "<CR>", L.open_file, { buffer = 0, noremap = true, silent = true })
   vim.keymap.set("n", "a", L.add_file, { buffer = 0, noremap = true, silent = true })
   vim.keymap.set("n", "r", L.rename_file, { buffer = 0, noremap = true, silent = true })
+  vim.keymap.set("n", "d", L.delete_file, { buffer = 0, noremap = true, silent = true })
 
   require("lsplorer.autocmd").setup()
 end

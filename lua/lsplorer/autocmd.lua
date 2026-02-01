@@ -41,6 +41,8 @@ A.setup = function()
 
         if lsplorer_win ~= -1 then
           vim.wo[lsplorer_win].winbar = "%#LsplorerWinbarInactive#" .. "~/" .. project_name
+          -- Dim text and directories when lsplorer becomes inactive
+          vim.wo[lsplorer_win].winhighlight = "Normal:LsplorerNormalNC,Directory:LsplorerDirectoryNC"
         end
 
         local dir = vim.fn.fnamemodify(current_buf_name or vim.fn.getcwd(), ":p:h")
@@ -69,6 +71,8 @@ A.setup = function()
     callback = function()
       local win = vim.api.nvim_get_current_win()
       vim.wo[win].winbar = "%#LsplorerWinbarActive#" .. "~/" .. project_name
+      -- Un-dim text and directories when lsplorer becomes active
+      vim.wo[win].winhighlight = "Normal:LsplorerNormal,Directory:LsplorerDirectory"
     end,
   })
 

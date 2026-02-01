@@ -38,8 +38,7 @@ local function setup_highlights(buf)
   vim.api.nvim_buf_call(buf, function()
     vim.cmd([[
       syntax clear
-      syntax match LsplorerDirectory "^.*/$"
-      hi def link LsplorerDirectory Directory
+      syntax match Directory "^.*/$"
     ]])
   end)
 end
