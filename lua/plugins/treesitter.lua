@@ -47,7 +47,8 @@ return {
     vim.api.nvim_command("set nofoldenable")
 
     vim.api.nvim_create_autocmd("FileType", {
-      pattern = parsers,
+      -- Add 'typescriptreact' to the list of filetypes that use the 'tsx' parser
+      pattern = vim.list_extend(vim.deepcopy(parsers), { "typescriptreact" }),
       callback = function()
         vim.treesitter.start()
       end,
