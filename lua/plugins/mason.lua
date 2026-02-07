@@ -46,6 +46,7 @@ return {
       ensure_installed = {
         "stylua", -- lua formatter
         "shfmt", -- sh formatter with bash support
+        "pgformatter", -- sql formatter
       },
     },
   },
