@@ -2,6 +2,7 @@ local map = require("util").map
 
 return {
   "ibhagwan/fzf-lua",
+  enabled = true,
   config = function()
     require("fzf-lua").setup({
       "default",
