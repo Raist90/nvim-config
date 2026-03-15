@@ -1,4 +1,4 @@
-local eza_output_with_parent = require("lsplorer.util").eza_output_with_parent
+local ls_output_with_parent = require("lsplorer.util").ls_output_with_parent
 local project_name = vim.fn.fnamemodify(require("lsplorer.util").project_root, ":t")
 
 A = {}
@@ -54,7 +54,7 @@ A.setup = function()
         --   return
         -- end
 
-        local output = eza_output_with_parent(dir)
+        local output = ls_output_with_parent(dir)
 
         vim.bo[explorer_buf].readonly = false
         vim.api.nvim_buf_set_var(explorer_buf, "lsplorer_dir", dir) -- Sync dir

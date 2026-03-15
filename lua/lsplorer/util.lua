@@ -1,13 +1,25 @@
 local U = {}
 
 -- Track project root (updated when user changes directory)
-local project_root = vim.loop.cwd()
+local project_root = vim.fn.getcwd()
 
-local function eza_output(dir)
-  return vim.fn.systemlist(
-    -- "/opt/homebrew/bin/eza -1 --icons=always --group-directories-first " .. vim.fn.shellescape(dir)
-    "/opt/homebrew/bin/eza -1 -F=always --group-directories-first " .. vim.fn.shellescape(dir)
-  )
+local function ls_output(dir)
+  if vim.fn.executable("ls") == 1 then
+    local cmd = string.format("ls -1 %s", vim.fn.shellescape(dir))
+    local entries = vim.fn.systemlist(cmd)
+    local dirs, files = {}, {}
+    for _, entry in ipairs(entries) do
+      if vim.fn.isdirectory(dir .. "/" .. entry) == 1 then
+        table.insert(dirs, entry .. "/")
+      else
+        table.insert(files, entry)
+      end
+    end
+    vim.list_extend(dirs, files)
+    return dirs
+  else
+    return {}
+  end
 end
 
 local function is_valid_filename(f)
@@ -16,11 +28,11 @@ local function is_valid_filename(f)
 end
 
 local function update_project_root()
-  project_root = vim.loop.cwd()
+  project_root = vim.fn.getcwd()
 end
 
-local function eza_output_with_parent(dir)
-  local output = eza_output(dir)
+local function ls_output_with_parent(dir)
+  local output = ls_output(dir)
 
   -- Normalize paths for comparison
   local normalized_dir = vim.fn.fnamemodify(dir, ":p")
@@ -66,8 +78,8 @@ local function setup_winbar(win, root)
   vim.wo[win].winbar = "%#LsplorerWinbarActive#" .. "~/" .. project_name
 end
 
-U.eza_output = eza_output
-U.eza_output_with_parent = eza_output_with_parent
+U.ls_output = ls_output
+U.ls_output_with_parent = ls_output_with_parent
 U.is_valid_filename = is_valid_filename
 U.setup_highlights = setup_highlights
 U.setup_winbar = setup_winbar

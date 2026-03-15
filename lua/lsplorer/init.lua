@@ -1,4 +1,4 @@
-local eza_output_with_parent = require("lsplorer.util").eza_output_with_parent
+local ls_output_with_parent = require("lsplorer.util").ls_output_with_parent
 
 -- Lsplorer is a simple file explorer for Neovim using eza for listing files.
 local L = {}
@@ -12,8 +12,11 @@ L.delete_file = require("lsplorer.action").delete_file
 
 function L.open_lsplorer()
   -- Get directory from current buffer BEFORE creating scratch buffer
-  local buf_path = vim.api.nvim_buf_get_name(0)
-  local dir = vim.fn.fnamemodify(buf_path or vim.fn.getcwd(), ":p:h")
+  local bufpath = vim.api.nvim_buf_get_name(0)
+  if bufpath == "" then
+    bufpath = vim.fn.getcwd()
+  end
+  local cwd = vim.fn.fnamemodify(bufpath, ":p:h")
 
   vim.cmd("topleft vertical 30new")
   vim.bo.buftype = "nofile"
@@ -23,9 +26,9 @@ function L.open_lsplorer()
   vim.bo.filetype = "lsplorer"
 
   -- Store the directory in buffer variable so autocmd can use it
-  vim.b.lsplorer_dir = dir
+  vim.b.lsplorer_dir = cwd
 
-  local output = eza_output_with_parent(dir)
+  local output = ls_output_with_parent(cwd)
   vim.api.nvim_buf_set_lines(0, 0, -1, false, output)
   require("lsplorer.util").setup_highlights(0)
 

@@ -1,10 +1,10 @@
-local eza_output_with_parent = require("lsplorer.util").eza_output_with_parent
+local ls_output_with_parent = require("lsplorer.util").ls_output_with_parent
 local is_valid_filename = require("lsplorer.util").is_valid_filename
 
 local A = {}
 
 local refresh_lsplorer = function(path, buf)
-  local output = eza_output_with_parent(path)
+  local output = ls_output_with_parent(path)
 
   -- Update Lsplorer buffer
   vim.bo[buf].readonly = false
