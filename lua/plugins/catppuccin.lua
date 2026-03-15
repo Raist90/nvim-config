@@ -50,6 +50,13 @@ return {
           StatuslineInfo = { fg = colors.sky },
           StatuslineHint = { fg = colors.teal },
           StatuslineTime = { fg = colors.blue, style = { "bold" } },
+
+          LsplorerNormal = { fg = colors.text },
+          LsplorerNormalNC = { fg = colors.subtext0 },
+          LsplorerDirectory = { fg = colors.blue },
+          LsplorerDirectoryNC = { fg = colors.subtext0 },
+          LsplorerWinbarActive = { fg = colors.blue },
+          LsplorerWinbarInactive = { fg = colors.subtext0 },
         }
       end,
     })
