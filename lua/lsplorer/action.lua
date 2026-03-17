@@ -1,19 +1,19 @@
-local ls_output_with_parent = require("lsplorer.util").ls_output_with_parent
-local is_valid_filename = require("lsplorer.util").is_valid_filename
+local util = require("lsplorer.util")
 
+local action = {}
 local A = {}
 
-local refresh_lsplorer = function(path, buf)
-  local output = ls_output_with_parent(path)
+function A.refresh_lsplorer(path, buf)
+  local output = util.ls_output_with_parent(path)
 
   -- Update Lsplorer buffer
-  vim.bo[buf].readonly = false
+  vim.bo[buf].modifiable = true
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
-  require("lsplorer.util").setup_highlights(buf)
-  vim.bo[buf].readonly = true
+  util.setup_highlights(buf)
+  vim.bo[buf].modifiable = false
 end
 
-local function open_file()
+function A.open_file()
   local buf = vim.api.nvim_get_current_buf()
   local line = vim.api.nvim_get_current_line()
 
@@ -22,14 +22,9 @@ local function open_file()
     return
   end
 
-  -- Extract filename from "icon filename" format
-  -- Pattern: icon (non-whitespace) + space(s) + filename
-  -- TODO: Let's also support ls -1 in config and make this optional
-  -- local filename = line:match("^%S+%s+(.+)$")
-  -- Strip trailing slash for directories (added by eza -F flag)
   local filename = line:gsub("/$", "")
 
-  if not is_valid_filename(filename) then
+  if not util.is_valid_filename(filename) then
     vim.api.nvim_echo({ { "Lsplorer: Invalid filename selected.", "ErrorMsg" } }, false, {})
     return
   end
@@ -79,7 +74,7 @@ local function open_file()
   end
 end
 
-local function rename_file()
+function A.rename_file()
   local buf = vim.api.nvim_get_current_buf()
   local dir = vim.b.lsplorer_dir
 
@@ -133,7 +128,7 @@ local function rename_file()
   end)
 end
 
-local function add_file()
+function A.add_file()
   local buf = vim.api.nvim_get_current_buf()
   local dir = vim.b.lsplorer_dir
 
@@ -255,7 +250,7 @@ local function wipe_buffers_for_path(path, is_dir)
   end
 end
 
-local function delete_file()
+function A.delete_file()
   local buf = vim.api.nvim_get_current_buf()
   local line = vim.api.nvim_get_current_line()
 
@@ -274,7 +269,7 @@ local function delete_file()
   end
 
   -- Validate filename
-  if not is_valid_filename(filename) then
+  if not util.is_valid_filename(filename) then
     vim.notify("Invalid filename", vim.log.levels.ERROR)
     return
   end
@@ -340,10 +335,10 @@ local function delete_file()
   end)
 end
 
-A.open_file = open_file
-A.refresh_lsplorer = refresh_lsplorer
-A.add_file = add_file
-A.rename_file = rename_file
-A.delete_file = delete_file
+action.open_file = A.open_file
+action.refresh_lsplorer = A.refresh_lsplorer
+action.add_file = A.add_file
+action.rename_file = A.rename_file
+action.delete_file = A.delete_file
 
-return A
+return action

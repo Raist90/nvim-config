@@ -1,9 +1,10 @@
+local util = {}
 local U = {}
 
 -- Track project root (updated when user changes directory)
-local project_root = vim.fn.getcwd()
+U.project_root = vim.fn.getcwd()
 
-local function ls_output(dir)
+function U.ls_output(dir)
   if vim.fn.executable("ls") == 1 then
     local cmd = string.format("ls -1 %s", vim.fn.shellescape(dir))
     local entries = vim.fn.systemlist(cmd)
@@ -22,21 +23,21 @@ local function ls_output(dir)
   end
 end
 
-local function is_valid_filename(f)
+function U.is_valid_filename(f)
   return f and f ~= "." and f ~= ""
   -- Allow ".." for parent directory navigation
 end
 
-local function update_project_root()
-  project_root = vim.fn.getcwd()
+function U.update_project_root()
+  U.project_root = vim.fn.getcwd()
 end
 
-local function ls_output_with_parent(dir)
-  local output = ls_output(dir)
+function U.ls_output_with_parent(dir)
+  local output = U.ls_output(dir)
 
   -- Normalize paths for comparison
   local normalized_dir = vim.fn.fnamemodify(dir, ":p")
-  local normalized_root = vim.fn.fnamemodify(project_root, ":p")
+  local normalized_root = vim.fn.fnamemodify(U.project_root, ":p")
 
   -- If not at project root, prepend parent directory link
   if normalized_dir ~= normalized_root then
@@ -46,7 +47,7 @@ local function ls_output_with_parent(dir)
   return output
 end
 
-local function setup_highlights(buf)
+function U.setup_highlights(buf)
   vim.api.nvim_buf_call(buf, function()
     vim.cmd([[
       syntax clear
@@ -56,7 +57,7 @@ local function setup_highlights(buf)
 end
 
 -- Set up winbar with project name for lsplorer window
-local function setup_winbar(win, root)
+function U.setup_winbar(win, root)
   -- Get project name (last component of root path)
   local project_name = vim.fn.fnamemodify(root, ":t")
 
@@ -74,16 +75,15 @@ local function setup_winbar(win, root)
   end
 
   -- Set window-local winbar with custom highlight
-  -- TODO: use actual_curwin and make it blue when active
   vim.wo[win].winbar = "%#LsplorerWinbarActive#" .. "~/" .. project_name
 end
 
-U.ls_output = ls_output
-U.ls_output_with_parent = ls_output_with_parent
-U.is_valid_filename = is_valid_filename
-U.setup_highlights = setup_highlights
-U.setup_winbar = setup_winbar
-U.update_project_root = update_project_root
-U.project_root = project_root
+util.ls_output = U.ls_output
+util.ls_output_with_parent = U.ls_output_with_parent
+util.is_valid_filename = U.is_valid_filename
+util.setup_highlights = U.setup_highlights
+util.setup_winbar = U.setup_winbar
+util.update_project_root = U.update_project_root
+util.project_root = U.project_root
 
-return U
+return util

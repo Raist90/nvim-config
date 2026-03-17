@@ -47,7 +47,7 @@ map("<leader>tt", function()
 end, "Open Terminal")
 
 map("<leader>E", function()
-  require("lsplorer").toggle_lsplorer()
+  require("lsplorer").toggle()
 end, "Toggle Lsplorer")
 
 -- map("<C-o>", function()

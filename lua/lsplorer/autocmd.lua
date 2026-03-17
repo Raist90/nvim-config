@@ -1,6 +1,7 @@
-local ls_output_with_parent = require("lsplorer.util").ls_output_with_parent
-local project_name = vim.fn.fnamemodify(require("lsplorer.util").project_root, ":t")
+local util = require("lsplorer.util")
+local project_name = vim.fn.fnamemodify(util.project_root, ":t")
 
+local autocmd = {}
 A = {}
 
 A.setup = function()
@@ -54,13 +55,13 @@ A.setup = function()
         --   return
         -- end
 
-        local output = ls_output_with_parent(dir)
+        local output = util.ls_output_with_parent(dir)
 
-        vim.bo[explorer_buf].readonly = false
+        vim.bo[explorer_buf].modifiable = true
         vim.api.nvim_buf_set_var(explorer_buf, "lsplorer_dir", dir) -- Sync dir
         vim.api.nvim_buf_set_lines(explorer_buf, 0, -1, false, output)
-        require("lsplorer.util").setup_highlights(explorer_buf)
-        vim.bo[explorer_buf].readonly = true
+        util.setup_highlights(explorer_buf)
+        vim.bo[explorer_buf].modifiable = false
       end
     end,
   })
@@ -98,4 +99,5 @@ A.setup = function()
   })
 end
 
-return A
+autocmd.setup = A.setup
+return autocmd
