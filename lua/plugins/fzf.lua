@@ -6,15 +6,6 @@ return {
   config = function()
     require("fzf-lua").setup({
       "default",
-      -- buffers = {
-      --   formatter = "path.filename_first",
-      -- },
-      -- files = {
-      --   formatter = "path.filename_first",
-      -- },
-      -- live_grep = {
-      --   formatter = "path.filename_first",
-      -- },
       actions = {
         files = {
           ["ctrl-h"] = require("fzf-lua").actions.toggle_ignore,
@@ -49,14 +40,6 @@ return {
         preview = {
           border = "single",
         },
-      },
-      fzf_colors = {
-        ["gutter"] = "-1",
-        ["fg+"] = { "fg", "FzfLuaCursorLine" },
-        ["bg+"] = { "bg", "FzfLuaCursorLine" },
-        ["hl+"] = { "fg", "FzfLuaSearch" },
-        ["pointer"] = { "fg", "FzfLuaPointer" },
-        ["marker"] = { "fg", "FzfLuaMarker" },
       },
     })
 
