@@ -1,15 +1,16 @@
+local ls = require("lsplorer.ls")
 local util = require("lsplorer.util")
 
 local action = {}
 local A = {}
 
 function A.refresh_lsplorer(path, buf)
-  local output = util.ls_output_with_parent(path)
+  local output = ls.run(path)
 
   -- Update Lsplorer buffer
   vim.bo[buf].modifiable = true
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
-  util.setup_highlights(buf)
+  util.highlights(buf)
   vim.bo[buf].modifiable = false
 end
 

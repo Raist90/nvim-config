@@ -1,8 +1,9 @@
+local ls = require("lsplorer.ls")
 local util = require("lsplorer.util")
 local project_name = vim.fn.fnamemodify(util.project_root, ":t")
 
 local autocmd = {}
-A = {}
+local A = {}
 
 A.setup = function()
   local group = vim.api.nvim_create_augroup("LsplorerAutoCmds", { clear = true })
@@ -55,12 +56,12 @@ A.setup = function()
         --   return
         -- end
 
-        local output = util.ls_output_with_parent(dir)
+        local output = ls.run(dir)
 
         vim.bo[explorer_buf].modifiable = true
         vim.api.nvim_buf_set_var(explorer_buf, "lsplorer_dir", dir) -- Sync dir
         vim.api.nvim_buf_set_lines(explorer_buf, 0, -1, false, output)
-        util.setup_highlights(explorer_buf)
+        util.highlights(explorer_buf)
         vim.bo[explorer_buf].modifiable = false
       end
     end,
