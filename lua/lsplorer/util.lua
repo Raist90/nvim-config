@@ -15,9 +15,10 @@ function U.is_open()
   return lsplorer_buf ~= nil
 end
 
-function U.is_valid_filename(f)
-  return f and f ~= "." and f ~= ""
+---@param str string
+function U.is_valid_selection(str)
   -- Allow ".." for parent directory navigation
+  return str and str ~= "." and str ~= ""
 end
 
 function U.update_project_root()
@@ -33,10 +34,19 @@ function U.highlights(buf)
   end)
 end
 
+---@param msg string
+---@param level "error"|"info"|"warn"
+function U.log(msg, level)
+  local levels = { error = vim.log.levels.ERROR, info = vim.log.levels.INFO, warn = vim.log.levels.WARN }
+  local log_level = levels[level] or vim.log.levels.INFO
+  vim.notify("Lsplorer: " .. msg, log_level)
+end
+
 util.is_open = U.is_open
-util.is_valid_filename = U.is_valid_filename
+util.is_valid_selection = U.is_valid_selection
 util.highlights = U.highlights
 util.update_project_root = U.update_project_root
+util.log = U.log
 util.project_root = U.project_root
 
 return util

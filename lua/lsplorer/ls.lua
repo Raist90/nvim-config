@@ -21,10 +21,7 @@ function L.run(dir)
     vim.list_extend(dirs, files)
     output = dirs
   else
-    vim.api.nvim_echo({
-      { "Lsplorer: ", "Title" },
-      { "ls command not found.", "WarningMsg" },
-    }, true, {})
+    util.log("ls command not found. Falling back to Vim's readdir.", "warn")
   end
 
   -- Normalize paths for comparison
