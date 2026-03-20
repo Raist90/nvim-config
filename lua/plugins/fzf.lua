@@ -12,6 +12,9 @@ return {
           ["enter"] = require("fzf-lua").actions.file_edit_or_qf,
         },
       },
+      grep = {
+        hidden = true,
+      },
       keymap = {
         buffers = {
           true,
