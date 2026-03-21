@@ -50,6 +50,20 @@ A.setup = function()
         vim.api.nvim_buf_set_var(explorer_buf, "lsplorer_dir", dir) -- Sync dir
         vim.api.nvim_buf_set_lines(explorer_buf, 0, -1, false, output)
         util.highlights(explorer_buf)
+
+        local current_filename = vim.fn.fnamemodify(current_buf_name, ":t")
+        if current_filename ~= "" then
+          local lines = vim.api.nvim_buf_get_lines(explorer_buf, 0, -1, false)
+          for i, line in ipairs(lines) do
+            local line_filename = line:match("^%s*(.+)$")
+            if line_filename == current_filename then
+              vim.api.nvim_buf_add_highlight(explorer_buf, -1, "LsplorerSelected", i - 1, 0, -1)
+              vim.api.nvim_win_set_cursor(lsplorer_win, { i, 0 })
+              break
+            end
+          end
+        end
+
         vim.bo[explorer_buf].modifiable = false
       end
     end,

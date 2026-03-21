@@ -55,6 +55,7 @@ return {
           LsplorerNormalNC = { fg = colors.subtext0 },
           LsplorerDirectory = { fg = colors.blue },
           LsplorerDirectoryNC = { fg = colors.subtext0 },
+          LsplorerSelected = { fg = colors.text },
           LsplorerWinbarActive = { fg = colors.blue },
           LsplorerWinbarInactive = { fg = colors.subtext0 },
         }
