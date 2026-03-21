@@ -56,6 +56,31 @@ L.toggle_lsplorer = function()
   end
 end
 
--- Public API
+L.autostart = function()
+  local args = vim.fn.argv()
+  local first_arg = args[1] or ""
+
+  if first_arg ~= "" and vim.fn.isdirectory(first_arg) == 1 then
+    vim.cmd("bd!")
+
+    local cwd = vim.fn.fnamemodify(first_arg, ":p:h")
+    buffer.init(cwd)
+
+    local currwin = vim.api.nvim_get_current_win()
+    window.init(currwin)
+
+    keymaps.load()
+    autocmd.setup()
+  end
+end
+
+-- Open lsplorer on startup when opening a directory
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    require("lsplorer").autostart()
+  end,
+})
+
 Lsplorer.toggle = L.toggle_lsplorer
+Lsplorer.autostart = L.autostart
 return Lsplorer
