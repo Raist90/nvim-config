@@ -6,6 +6,7 @@ local B = {}
 
 ---@param cwd string
 function B.init(cwd)
+  vim.cmd("wincmd =")
   vim.cmd("topleft vertical 30new")
   vim.bo.buftype = "nofile"
   vim.bo.bufhidden = "wipe"

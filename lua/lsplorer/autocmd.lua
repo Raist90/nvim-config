@@ -18,26 +18,22 @@ A.setup = function()
 
       local current_buf = args.buf
       local current_buf_name = vim.api.nvim_buf_get_name(current_buf)
-      -- print("triggered from: " .. current_buf_name)
 
-      -- -- Don't process if we're entering the Lsplorer itself
+      -- Don't process if we're entering the Lsplorer itself
       if current_buf_name:match("Lsplorer$") then
-        -- print("entered Lsplorer, skipping update")
         return
       end
 
-      --
-      -- -- Find the Lsplorer buffer if it exists
+      -- Find the Lsplorer buffer if it exists
       local explorer_buf = nil
       for _, buf in ipairs(vim.api.nvim_list_bufs()) do
         if vim.api.nvim_buf_get_name(buf):match("Lsplorer$") and vim.api.nvim_buf_is_loaded(buf) then
           explorer_buf = buf
-          -- print("found Lsplorer buffer: " .. vim.api.nvim_buf_get_name(buf))
           break
         end
       end
-      --
-      -- -- If Lsplorer exists, update it with the current buffer's directory
+
+      -- If Lsplorer exists, update it with the current buffer's directory
       if explorer_buf then
         local lsplorer_win = vim.fn.bufwinid(explorer_buf)
 
@@ -48,14 +44,6 @@ A.setup = function()
         end
 
         local dir = vim.fn.fnamemodify(current_buf_name or vim.fn.getcwd(), ":p:h")
-        -- TODO: Carefully think about this
-        -- local lsplorer_dir = vim.api.nvim_buf_get_var(explorer_buf, "lsplorer_dir")
-        -- print(dir, lsplorer_dir)
-
-        -- if dir == lsplorer_dir then
-        --   return
-        -- end
-
         local output = ls.run(dir)
 
         vim.bo[explorer_buf].modifiable = true
@@ -69,7 +57,7 @@ A.setup = function()
 
   vim.api.nvim_create_autocmd({ "WinEnter" }, {
     group = group,
-    pattern = "*Lsplorer", -- Match buffers ending in "Lsplorer"
+    pattern = "*Lsplorer",
     callback = function()
       local win = vim.api.nvim_get_current_win()
       vim.wo[win].winbar = "%#LsplorerWinbarActive#" .. "~/" .. project_name
@@ -96,6 +84,14 @@ A.setup = function()
           end
         end
       end)
+    end,
+  })
+
+  vim.api.nvim_create_autocmd({ "BufWipeout" }, {
+    group = group,
+    pattern = "*Lsplorer",
+    callback = function()
+      vim.wo.winfixwidth = false
     end,
   })
 end
