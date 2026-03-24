@@ -1,3 +1,4 @@
+local config = require("lsplorer.config")
 local ls = require("lsplorer.ls")
 local util = require("lsplorer.util")
 
@@ -7,7 +8,7 @@ local B = {}
 ---@param cwd string
 function B.init(cwd)
   vim.cmd("wincmd =")
-  vim.cmd("topleft vertical 30new")
+  vim.cmd(config.opts.ui.side .. " vertical " .. config.opts.ui.width .. "new")
   vim.bo.buftype = "nofile"
   vim.bo.bufhidden = "wipe"
   vim.bo.swapfile = false

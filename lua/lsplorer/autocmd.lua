@@ -1,3 +1,4 @@
+local config = require("lsplorer.config")
 local ls = require("lsplorer.ls")
 local util = require("lsplorer.util")
 local project_name = vim.fn.fnamemodify(util.project_root, ":t")
@@ -43,13 +44,15 @@ A.setup = function()
           vim.wo[lsplorer_win].winhighlight = "Normal:LsplorerNormalNC,Directory:LsplorerDirectoryNC"
         end
 
-        local dir = vim.fn.fnamemodify(current_buf_name or vim.fn.getcwd(), ":p:h")
-        local output = ls.run(dir)
+        if config.opts.follow_active_buffer then
+          local dir = vim.fn.fnamemodify(current_buf_name or vim.fn.getcwd(), ":p:h")
+          local output = ls.run(dir)
 
-        vim.bo[explorer_buf].modifiable = true
-        vim.api.nvim_buf_set_var(explorer_buf, "lsplorer_dir", dir) -- Sync dir
-        vim.api.nvim_buf_set_lines(explorer_buf, 0, -1, false, output)
-        util.highlights(explorer_buf)
+          vim.bo[explorer_buf].modifiable = true
+          vim.api.nvim_buf_set_var(explorer_buf, "lsplorer_dir", dir) -- Sync dir
+          vim.api.nvim_buf_set_lines(explorer_buf, 0, -1, false, output)
+          util.highlights(explorer_buf)
+        end
 
         local current_filename = vim.fn.fnamemodify(current_buf_name, ":t")
         if current_filename ~= "" then
