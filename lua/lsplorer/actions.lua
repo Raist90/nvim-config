@@ -1,4 +1,5 @@
 local buffers = require("lsplorer.buffers")
+local git = require("lsplorer.git")
 local ui = require("lsplorer.ui")
 local util = require("lsplorer.util")
 
@@ -27,7 +28,7 @@ local function open_file(file)
     vim.cmd("vsplit")
   end
 
-  -- Open the file
+  file = git.strip_status(file)
   vim.cmd("edit " .. vim.fn.fnameescape(file))
 end
 
@@ -112,7 +113,14 @@ function A.rename_entry()
   local buf = vim.api.nvim_get_current_buf()
   local ls_dir = vim.b.lsplorer_dir
 
-  vim.ui.input({ default = vim.api.nvim_get_current_line():gsub("/$", ""), prompt = "Rename to: " }, function(new_name)
+  local currline = vim.api.nvim_get_current_line()
+  currline = currline:gsub("/$", "")
+  if currline == "" then
+    util.log("no file selected for renaming", "error")
+  end
+
+  currline = git.strip_status(currline)
+  vim.ui.input({ default = currline, prompt = "Rename to: " }, function(new_name)
     if not new_name or new_name == "" then
       return
     end
@@ -123,11 +131,9 @@ function A.rename_entry()
       return
     end
 
-    local currline = vim.api.nvim_get_current_line()
-    local prev_name = currline:gsub("/$", "")
+    local prev_name = currline
     local prev_path = ls_dir .. "/" .. prev_name
     local new_path = ls_dir .. "/" .. new_name
-
     -- Check if new name already exists
     if vim.fn.filereadable(new_path) == 1 or vim.fn.isdirectory(new_path) == 1 then
       util.log("already exists: " .. new_name, "error")
@@ -163,23 +169,20 @@ end
 
 function A.delete_entry()
   local buf = vim.api.nvim_get_current_buf()
-  local line = vim.api.nvim_get_current_line()
+  local filename = vim.api.nvim_get_current_line()
 
-  -- Skip empty lines
-  if line == "" or line:match("^%s*$") then
+  if util.is_empty_string(filename) then
+    util.log("no file selected for deletion", "error")
     return
   end
 
-  -- Extract filename (strip trailing slash for directories)
-  local filename = line:gsub("/$", "")
-
-  -- Don't allow deleting ../
+  filename = filename:gsub("/$", "")
+  filename = git.strip_status(filename)
   if filename == ".." then
     util.log("cannot delete parent directory link: " .. filename, "error")
     return
   end
 
-  -- Validate filename
   if not util.is_valid_selection(filename) then
     util.log("invalid filename selected: " .. filename, "error")
     return

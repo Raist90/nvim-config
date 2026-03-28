@@ -1,3 +1,4 @@
+local git = require("lsplorer.git")
 local util = require("lsplorer.util")
 
 local ls = {}
@@ -15,7 +16,12 @@ function L.run(dir)
       if vim.fn.isdirectory(dir .. "/" .. entry) == 1 then
         table.insert(dirs, entry .. "/")
       else
-        table.insert(files, entry)
+        local symbol = git.get_status_symbol(dir, entry)
+        if symbol then
+          table.insert(files, entry .. " " .. symbol)
+        else
+          table.insert(files, entry)
+        end
       end
     end
     vim.list_extend(dirs, files)

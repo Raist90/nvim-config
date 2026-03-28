@@ -1,8 +1,7 @@
 local autocmd = require("lsplorer.autocmd")
-local buffer = require("lsplorer.buffer")
 local keymaps = require("lsplorer.keymaps")
+local ui = require("lsplorer.ui")
 local util = require("lsplorer.util")
-local window = require("lsplorer.window")
 
 -- Lsplorer is a simple file explorer for Neovim using ls for listing files.
 local Lsplorer = {}
@@ -14,17 +13,17 @@ function L.open()
     bufpath = vim.fn.getcwd()
   end
   local cwd = vim.fn.fnamemodify(bufpath, ":p:h")
-  buffer.init(cwd)
+  ui.init_buf(cwd)
 
   local currwin = vim.api.nvim_get_current_win()
-  window.init(currwin)
+  ui.init_win(currwin)
 
   keymaps.load()
   autocmd.setup()
 end
 
 vim.api.nvim_create_user_command("Lsplorer", function()
-  L.open()
+  L.toggle_lsplorer()
 end, {})
 
 L.focus = function()
@@ -64,10 +63,10 @@ L.autostart = function()
     vim.cmd("bd!")
 
     local cwd = vim.fn.fnamemodify(first_arg, ":p:h")
-    buffer.init(cwd)
+    ui.init_buf(cwd)
 
     local currwin = vim.api.nvim_get_current_win()
-    window.init(currwin)
+    ui.init_win(currwin)
 
     keymaps.load()
     autocmd.setup()
@@ -77,10 +76,9 @@ end
 -- Open lsplorer on startup when opening a directory
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    require("lsplorer").autostart()
+    L.autostart()
   end,
 })
 
 Lsplorer.toggle = L.toggle_lsplorer
-Lsplorer.autostart = L.autostart
 return Lsplorer
