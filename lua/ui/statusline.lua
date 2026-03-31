@@ -62,25 +62,6 @@ local function lsp_servers_component()
   return string.format("%s%s", highlight("StatuslineLSP"), pad_string(lsp_names))
 end
 
-local function diagnostics_component()
-  local levels = {
-    { key = "e", hl = "StatuslineError", severity = vim.diagnostic.severity.ERROR, label = "E" },
-    { key = "w", hl = "StatuslineWarn", severity = vim.diagnostic.severity.WARN, label = "W" },
-    { key = "i", hl = "StatuslineInfo", severity = vim.diagnostic.severity.INFO, label = "I" },
-    { key = "h", hl = "StatuslineHint", severity = vim.diagnostic.severity.HINT, label = "H" },
-  }
-
-  local parts = {}
-  for _, level in ipairs(levels) do
-    local count = #vim.diagnostic.get(0, { severity = level.severity })
-    if count > 0 then
-      table.insert(parts, string.format("%s%s: %d", highlight(level.hl), level.label, count))
-    end
-  end
-
-  return table.concat(parts, " ")
-end
-
 local function time_component()
   return string.format("%s%s", highlight("StatuslineTime"), tostring(os.date("%H:%M")))
 end
@@ -91,7 +72,7 @@ Statusline.build = function()
     highlight("Statusline"),
     -- TODO: Pad this directly in the component
     pad_string(filepath_component()), -- File path
-    diagnostics_component(),
+    vim.diagnostic.status(0),
     "%=", -- Separator
     lsp_servers_component(),
     time_component(),
