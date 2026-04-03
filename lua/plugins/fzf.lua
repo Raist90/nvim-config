@@ -10,10 +10,11 @@ return {
         files = {
           ["ctrl-h"] = require("fzf-lua").actions.toggle_ignore,
           ["enter"] = require("fzf-lua").actions.file_edit_or_qf,
+          ["ctrl-r"] = require("fzf-lua").actions.toggle_hidden,
         },
       },
       grep = {
-        hidden = true,
+        hidden = false,
       },
       keymap = {
         buffers = {
