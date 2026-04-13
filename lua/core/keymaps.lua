@@ -3,6 +3,9 @@ vim.g.maplocalleader = " "
 
 local map = require("util").map
 
+-- Escape from insert mode with 'jk'
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
+
 map("<C-h>", "<C-w>h", "Go to Left Window")
 map("<C-j>", "<C-w>j", "Go to Lower Window")
 map("<C-k>", "<C-w>k", "Go to Upper Window")
