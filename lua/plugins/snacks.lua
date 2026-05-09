@@ -46,7 +46,7 @@ return {
         enabled = false,
       },
       scope = {
-        enabled = true,
+        enabled = false,
       },
     },
     input = { enabled = true },
