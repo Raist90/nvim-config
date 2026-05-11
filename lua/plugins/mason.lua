@@ -44,6 +44,7 @@ return {
     opts = {
       -- list of formatter and linter for mason to install
       ensure_installed = {
+        "markdownlint",
         "stylua", -- lua formatter
         "shfmt", -- sh formatter with bash support
         "pgformatter", -- sql formatter
