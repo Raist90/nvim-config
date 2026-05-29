@@ -26,6 +26,7 @@ return {
       "make",
       "markdown",
       "markdown_inline",
+      "prisma",
       "regex",
       "scss",
       "sql",

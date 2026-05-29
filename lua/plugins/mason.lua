@@ -34,6 +34,7 @@ return {
         "marksman",
         "vue_ls",
         "vtsls",
+        "prismals",
       },
     },
   },
