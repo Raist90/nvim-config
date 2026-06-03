@@ -1,6 +1,6 @@
 local config = require("lsplorer.config")
 local git = require("lsplorer.git")
-local ls = require("lsplorer.ls")
+local scan = require("lsplorer.scan")
 local ui = require("lsplorer.ui")
 local util = require("lsplorer.util")
 local project_name = vim.fn.fnamemodify(util.project_root, ":t")
@@ -72,7 +72,7 @@ A.setup = function()
 
         if config.opts.follow_active_buffer then
           local dir = vim.fn.fnamemodify(currbuf_name or vim.fn.getcwd(), ":p:h")
-          local output = ls.run(dir)
+          local output = scan.run(dir)
 
           vim.bo[lsplorer_buf].modifiable = true
           vim.api.nvim_buf_set_var(lsplorer_buf, "lsplorer_dir", dir) -- Sync dir

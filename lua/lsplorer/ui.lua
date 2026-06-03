@@ -1,5 +1,5 @@
 local config = require("lsplorer.config")
-local ls = require("lsplorer.ls")
+local scan = require("lsplorer.scan")
 local util = require("lsplorer.util")
 
 local ui = {}
@@ -7,7 +7,7 @@ local U = {}
 
 function U.refresh_lsplorer(path, buf)
   vim.bo[buf].modifiable = true
-  local output = ls.run(path)
+  local output = scan.run(path)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
   util.highlights(buf)
   vim.bo[buf].modifiable = false
@@ -26,7 +26,7 @@ function U.init_buf(cwd)
   -- Store the directory in buffer variable so autocmd can use it
   vim.b.lsplorer_dir = cwd
 
-  local output = ls.run(cwd)
+  local output = scan.run(cwd)
   vim.api.nvim_buf_set_lines(0, 0, -1, false, output)
   util.highlights(0)
 end
