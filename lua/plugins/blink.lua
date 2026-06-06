@@ -75,6 +75,8 @@ return { -- Autocompletion
       menu = {
         border = "single",
       },
+
+      -- trigger = { prefetch_on_insert = false },
     },
 
     -- Shows a signature help window while you type arguments for a function
@@ -82,9 +84,19 @@ return { -- Autocompletion
 
     sources = {
       default = { "lsp", "copilot", "path", "lazydev" },
+      -- default = { "lsp", "copilot", "path", "lazydev", "minuet" },
       providers = {
         copilot = { name = "copilot", module = "blink-copilot", score_offset = 100, async = true },
         lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+        -- minuet = {
+        --   name = "minuet",
+        --   module = "minuet.blink",
+        --   async = true,
+        --   -- Should match minuet.config.request_timeout * 1000,
+        --   -- since minuet.config.request_timeout is in seconds
+        --   timeout_ms = 3000,
+        --   score_offset = 50, -- Gives minuet higher priority among suggestions
+        -- },
       },
     },
 

@@ -4,6 +4,7 @@ return {
     name = "copilot",
     cmd = "Copilot",
     event = "InsertEnter",
+    enabled = true,
     opts = {
       suggestion = {
         enabled = false,
