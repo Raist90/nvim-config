@@ -37,14 +37,6 @@ map("<leader>ld", function()
   vim.diagnostic.open_float(nil, { focusable = true, scope = "cursor" })
 end, "Open Diagnostic Float")
 
-map("<leader>Co", function()
-  require("CopilotChat").open()
-end, "Copilot Chat Prompts")
-
-map("<leader>Cc", function()
-  require("CopilotChat").close()
-end, "Copilot Chat Close")
-
 map("<leader>tt", function()
   vim.cmd("terminal")
 end, "Open Terminal")
