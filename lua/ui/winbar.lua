@@ -1,16 +1,14 @@
 local pad_string = require("util").pad_string
 
+local h = function(hl)
+  return string.format("%%#%s#", hl)
+end
+
 Winbar = {}
 
 Winbar.build = function(is_active)
-  local highlight = function(hl)
-    return is_active and hl or "%#WinbarInactive#"
-  end
-
   local f_tbl = {
-    ["copilot-chat"] = "%t",
-    ["netrw"] = "%t %m",
-    ["terminal"] = "%t %m",
+    ["netrw"] = " %t %m",
   }
 
   local content = ""
@@ -20,12 +18,28 @@ Winbar.build = function(is_active)
   elseif f_tbl[vim.bo.buftype] then
     content = f_tbl[vim.bo.buftype]
   else
+    local mode_hl
+    if is_active then
+      mode_hl = h("WinbarModeActive")
+    else
+      mode_hl = h("WinbarModeInactive")
+    end
+    local mode_text = " "
+      .. vim.api.nvim_get_mode().mode:upper()
+      .. " "
+      .. string.format("%s%s", h(is_active and "WinbarSeparatorActive" or "WinbarSeparatorInactive"), "")
+    local restore_hl = h(is_active and "WinbarActive" or "WinbarInactive")
+
     content = table.concat({
-      "%t",
-      "%h%m%r%=%P",
+      is_active and mode_hl .. mode_text .. restore_hl or "",
+      " %t",
+      pad_string("%h%m%r%=%P"),
+      is_active and string.format("%s%s", h("WinbarSeparator"), "") or "",
     })
   end
-  return pad_string(highlight("%#WinbarActive#") .. content)
+
+  local prefix = is_active and "%#WinbarActive#" or "%#WinbarInactive#"
+  return prefix .. content
 end
 
 Winbar.setup = function()

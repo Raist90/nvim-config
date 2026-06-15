@@ -41,18 +41,30 @@ return {
       },
       custom_highlights = function(colors)
         return {
+          CursorLineNr = { fg = colors.text, style = { "bold" } },
+          WinSeparator = { fg = colors.surface0 },
+
+          BlinkCmpMenuBorder = { link = "FloatBorder" },
+
           LazyGitBorder = { fg = colors.lavender },
 
-          WinbarActive = { fg = colors.blue, style = { "bold" } },
-          WinbarInactive = { fg = colors.subtext0 },
+          WinbarActive = { bg = colors.surface0, fg = colors.blue, style = { "bold" } },
+          WinbarInactive = { fg = colors.subtext1, style = { "bold" } },
+          WinbarModeActive = { bg = colors.blue, fg = colors.base, style = { "bold" } },
+          WinbarModeInactive = { bg = colors.subtext0, fg = colors.base },
+          WinbarSeparator = { fg = colors.surface0 },
+          WinbarSeparatorActive = { bg = colors.surface0, fg = colors.blue },
+          WinbarSeparatorInactive = { fg = colors.subtext0 },
 
           Statusline = { fg = colors.text },
-          StatuslineGit = { fg = colors.blue, style = { "bold" } },
+          StatuslineGit = { bg = colors.base, fg = colors.blue, style = { "bold" } },
+          StatuslineLSP = { bg = colors.base, fg = colors.text },
+          StatuslineLSPBracket = { bg = colors.base, fg = colors.blue, style = { "bold" } },
           StatuslineError = { fg = colors.red },
           StatuslineWarn = { fg = colors.yellow },
           StatuslineInfo = { fg = colors.sky },
           StatuslineHint = { fg = colors.teal },
-          StatuslineTime = { fg = colors.blue, style = { "bold" } },
+          StatuslineTime = { fg = colors.text, style = { "bold" } },
 
           LsplorerNormal = { fg = colors.text },
           LsplorerNormalNC = { fg = colors.subtext0 },
