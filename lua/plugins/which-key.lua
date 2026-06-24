@@ -21,11 +21,9 @@ return { -- Useful plugin to show you pending keybinds.
       { "<leader>j", group = "Jump" },
       { "<leader>l", group = "LSP" },
       { "<leader>n", group = "Notification" },
-      { "<leader>o", group = "Opencode" },
       { "<leader>p", group = "Packages" },
       { "<leader>t", group = "Terminal" },
       { "<leader>q", group = "Quickfix" },
-      { "<leader>w", group = "Window" },
     },
 
     ---@type wk.Win.opts

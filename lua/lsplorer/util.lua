@@ -29,10 +29,6 @@ function U.is_empty_string(str)
   return str:match("^%s*$")
 end
 
-function U.update_project_root()
-  U.project_root = vim.fn.getcwd()
-end
-
 function U.highlights(buf)
   vim.api.nvim_buf_call(buf, function()
     vim.cmd([[
@@ -83,7 +79,6 @@ util.is_open = U.is_open
 util.is_valid_selection = U.is_valid_selection
 util.is_empty_string = U.is_empty_string
 util.highlights = U.highlights
-util.update_project_root = U.update_project_root
 util.log = U.log
 util.project_root = U.project_root
 util.find = U.find

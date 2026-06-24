@@ -31,16 +31,7 @@ local function pad_string(str, left, right)
   return string.rep(" ", left) .. str .. string.rep(" ", right)
 end
 
----Trim leading and trailing whitespace from a string.
----@param s string The string to trim.
----@return string The trimmed string.
-local function trim_string(s)
-  return s:match("^%s*(.-)%s*$")
-end
-
 M.on_attach = on_attach
 M.map = map
 M.pad_string = pad_string
-M.trim_string = trim_string
-
 return M
