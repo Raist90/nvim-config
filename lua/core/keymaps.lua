@@ -29,9 +29,9 @@ map("<leader>nh", function()
   require("snacks").notifier.show_history()
 end, "Show Notification History")
 
-map("<leader>Z", function()
-  require("snacks").zen()
-end, "Toggle Zen Mode")
+-- map("<leader>Z", function()
+--   require("snacks").zen()
+-- end, "Toggle Zen Mode")
 
 map("<leader>ld", function()
   vim.diagnostic.open_float(nil, { focusable = true, scope = "cursor" })
@@ -48,4 +48,3 @@ end, "Toggle Lsplorer")
 -- map("<C-o>", function()
 --   require("lsplorer").focus()
 -- end, "Focus Lsplorer Window")
-

@@ -63,7 +63,7 @@ return {
       },
     },
     words = { enabled = false },
-    zen = { enabled = true, toggles = { dim = false }, show = { statusline = true } },
+    zen = { enabled = false, toggles = { dim = false }, show = { statusline = true } },
     styles = {
       notification = {
         relative = "editor",
