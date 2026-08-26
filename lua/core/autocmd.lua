@@ -29,3 +29,17 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
     vim.cmd("tabnext " .. current_tab)
   end,
 })
+
+vim.api.nvim_create_autocmd("VimLeave", {
+  desc = "Kill terminal buffer jobs on exit",
+  callback = function()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.bo[buf].buftype == "terminal" then
+        local chan = vim.b[buf].terminal_job_id
+        if chan then
+          vim.fn.jobstop(chan)
+        end
+      end
+    end
+  end,
+})
