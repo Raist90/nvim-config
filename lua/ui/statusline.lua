@@ -41,6 +41,10 @@ local function filepath_component()
   end
 end
 
+local function modified_component()
+  return vim.bo.modified and "[+]" or ""
+end
+
 local function lsp_servers_component()
   local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
   if rawequal(next(clients), nil) then
@@ -85,6 +89,7 @@ Statusline.build = function()
     pad_string(git_branch_component(), 1, 0),
     highlight("Statusline"),
     pad_string(filepath_component()),
+    pad_string(modified_component(), 0, 1),
     vim.diagnostic.status(0),
     "%=", -- Separator
     lsp_servers_component(),
