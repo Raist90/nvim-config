@@ -9,9 +9,10 @@ return {
         solid = true,
         transparent = true,
       },
-      -- styles = {
-      --   keywords = { "bold" },
-      -- },
+      styles = {
+        -- keywords = { "bold" },
+        -- functions = { "bold" },
+      },
       no_italic = true,
       transparent_background = true,
       integrations = {
