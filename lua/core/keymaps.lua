@@ -48,3 +48,10 @@ end, "Toggle Lsplorer")
 -- map("<C-o>", function()
 --   require("lsplorer").focus()
 -- end, "Focus Lsplorer Window")
+
+vim.keymap.set({ "i", "s" }, "<Esc>", function()
+  if vim.snippet.active() then
+    vim.snippet.stop() -- Chiude la sessione e pulisce il testo evidenziato
+  end
+  return "<Esc>"
+end, { expr = true })
