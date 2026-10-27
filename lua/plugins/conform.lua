@@ -21,6 +21,7 @@ return { -- Autoformat
       }
     end,
     formatters_by_ft = {
+      go = { "goimports" },
       lua = { "stylua" },
       markdown = { "markdownlint" },
       sql = { "pg_format" },
