@@ -57,10 +57,10 @@ return {
           WinbarSeparatorActive = { bg = colors.surface0, fg = colors.blue },
           WinbarSeparatorInactive = { fg = colors.subtext0 },
 
-          Statusline = { fg = colors.text },
+          Statusline = { fg = colors.text, bg = "NONE" },
           StatuslineGit = { bg = colors.base, fg = colors.blue, style = { "bold" } },
-          StatuslineLSP = { bg = colors.base, fg = colors.text },
-          StatuslineLSPBracket = { bg = colors.base, fg = colors.blue, style = { "bold" } },
+          StatuslineLSP = { bg = "NONE", fg = colors.text },
+          StatuslineLSPBracket = { bg = "NONE", fg = colors.blue, style = { "bold" } },
           StatuslineError = { fg = colors.red },
           StatuslineWarn = { fg = colors.yellow },
           StatuslineInfo = { fg = colors.sky },
