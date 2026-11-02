@@ -74,6 +74,8 @@ return {
           LsplorerSelected = { fg = colors.text },
           LsplorerWinbarActive = { fg = colors.blue },
           LsplorerWinbarInactive = { fg = colors.subtext0 },
+
+          GitSignsCurrentLineBlame = { fg = colors.overlay1 },
         }
       end,
     })
