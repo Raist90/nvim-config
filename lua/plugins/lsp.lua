@@ -8,6 +8,56 @@ return {
     "b0o/schemastore.nvim",
   },
   config = function()
+    local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = true })
+    local detach_augroup = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true })
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+      callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if
+          not client
+          or not client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+        then
+          return
+        end
+
+        -- Several clients may attach to the same buffer; register once per buffer.
+        if vim.b[event.buf].lsp_highlight_attached then
+          return
+        end
+        vim.b[event.buf].lsp_highlight_attached = true
+
+        -- The following two autocommands are used to highlight references of the
+        -- word under your cursor when your cursor rests there for a little while.
+        --    See `:help CursorHold` for information about when this is executed
+        --
+        -- When you move your cursor, the highlights will be cleared (the second autocommand).
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+          buffer = event.buf,
+          group = highlight_augroup,
+          callback = vim.lsp.buf.document_highlight,
+        })
+
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+          buffer = event.buf,
+          group = highlight_augroup,
+          callback = vim.lsp.buf.clear_references,
+        })
+      end,
+    })
+
+    -- Registered once (not per buffer), so detaching one buffer doesn't drop
+    -- the autocmds belonging to other buffers.
+    vim.api.nvim_create_autocmd("LspDetach", {
+      group = detach_augroup,
+      callback = function(event)
+        vim.api.nvim_buf_call(event.buf, vim.lsp.buf.clear_references)
+        vim.api.nvim_clear_autocmds({ group = highlight_augroup, buffer = event.buf })
+        vim.b[event.buf].lsp_highlight_attached = nil
+      end,
+    })
+
     -- Diagnostic Config
     -- See :help vim.diagnostic.Opts
     vim.diagnostic.config({

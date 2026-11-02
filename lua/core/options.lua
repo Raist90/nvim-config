@@ -40,6 +40,9 @@ opt.smartcase = true
 
 opt.signcolumn = "yes"
 
+-- Faster CursorHold (document highlight, swapfile writes)
+opt.updatetime = 300
+
 -- Configure how new splits should be opened
 opt.splitright = true
 
