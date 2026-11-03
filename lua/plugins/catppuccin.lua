@@ -36,7 +36,8 @@ return {
         },
         snacks = {
           enabled = true,
-          indent_scope_color = "surface2",
+          -- indent_scope_color = "surface2",
+          indent_scope_color = "lavender",
         },
         flash = true,
       },
